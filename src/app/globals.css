@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
+/* Govia Brand Book v1.0 (Mayo 2026) — tokens B2C (editorial/marketing, fondos claros)
+   Fuente: ~/.govia/.claude/skills/diseno-govia/SKILL.md §2-3 */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ivory-base: #f4f0e6;
+  --ivory-deep: #ece6d6;
+  --paper-white: #fdfcf9;
+  --navy: #0f1f4a;
+  --azul: #1a3a7a;
+  --pizarra-calida: #3a4866;
+  --oro: #c9952a;
+  --oro-claro: #e8b84a;
+  --oro-suave: #9c7a3a;
+  --teal-editorial: #0e8478;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-dm-sans);
+  --font-serif: var(--font-dm-serif-display);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
