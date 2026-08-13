@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { getSupabaseServerClient } from "@/lib/supabase-server";
+import { sendWhitepaperEmail } from "@/lib/resend";
 
 const LeadSchema = z.object({
   nombre: z.string().trim().min(2, "Ingresa tu nombre completo."),
@@ -15,7 +16,6 @@ const LeadSchema = z.object({
 export type SubmitLeadState = {
   status: "idle" | "success" | "error";
   message?: string;
-  downloadUrl?: string;
 };
 
 export async function submitLead(
@@ -47,24 +47,23 @@ export async function submitLead(
     consentimiento_lpdp: true,
   });
 
-  if (error) {
-    // Unique violation on email → trátalo como éxito silencioso (ya tiene el PDF).
-    if (error.code === "23505") {
-      return {
-        status: "success",
-        downloadUrl: process.env.NEXT_PUBLIC_WHITEPAPER_URL,
-      };
-    }
+  // 23505 = email duplicado (ya tiene el PDF) → tratarlo como éxito silencioso,
+  // cualquier otro error de Supabase sí se reporta al usuario.
+  if (error && error.code !== "23505") {
     return {
       status: "error",
       message: "No pudimos registrar tu descarga. Intenta de nuevo en unos minutos.",
     };
   }
 
-  // TODO (pre go-live): disparar email transaccional (Resend) con link firmado
-  // en vez de exponer NEXT_PUBLIC_WHITEPAPER_URL directo — ver spec §3.
-  return {
-    status: "success",
-    downloadUrl: process.env.NEXT_PUBLIC_WHITEPAPER_URL,
-  };
+  // El envío de email nunca bloquea el éxito de la captura del lead — ya
+  // está en Supabase, que es la parte crítica. Un fallo de Resend solo se
+  // loguea server-side (ver src/lib/resend.ts).
+  await sendWhitepaperEmail({
+    nombre,
+    email,
+    downloadUrl: process.env.WHITEPAPER_DOWNLOAD_URL,
+  });
+
+  return { status: "success" };
 }

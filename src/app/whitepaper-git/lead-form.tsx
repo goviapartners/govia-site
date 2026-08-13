@@ -16,14 +16,6 @@ export function LeadForm() {
           Te enviamos el whitepaper a tu correo. Si no llega en unos minutos,
           revisa spam.
         </p>
-        {state.downloadUrl && (
-          <a
-            href={state.downloadUrl}
-            className="mt-4 inline-block rounded-sm bg-[#0f1f4a] px-6 py-2.5 text-sm font-semibold text-[#f4f0e6] transition-colors hover:bg-[#1a3a7a]"
-          >
-            Descargar ahora
-          </a>
-        )}
       </div>
     );
   }
