@@ -63,20 +63,26 @@ export default function TMSRadarChart({ scores, benchmarkScores, size = 320 }: T
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // El canvas es más ancho que el diagrama (maxR calculado sobre `size`)
+    // para dejar margen a las etiquetas laterales ("Confianza"/"Gobierno")
+    // sin que el borde del canvas las recorte.
+    const canvasW = size + 130;
+    const canvasH = size + 30;
+
     const dpr = window.devicePixelRatio || 1;
-    canvas.width = size * dpr;
-    canvas.height = size * dpr;
-    canvas.style.width = `${size}px`;
-    canvas.style.height = `${size}px`;
+    canvas.width = canvasW * dpr;
+    canvas.height = canvasH * dpr;
+    canvas.style.width = `${canvasW}px`;
+    canvas.style.height = `${canvasH}px`;
     ctx.scale(dpr, dpr);
 
-    const cx = size / 2;
-    const cy = size / 2;
+    const cx = canvasW / 2;
+    const cy = canvasH / 2;
     const maxR = size * 0.34;
     const n = 4;
     const angleStep = (Math.PI * 2) / n;
 
-    ctx.clearRect(0, 0, size, size);
+    ctx.clearRect(0, 0, canvasW, canvasH);
 
     // Anillos de referencia (banda de color por score)
     const rings = [20, 40, 60, 80, 100];
