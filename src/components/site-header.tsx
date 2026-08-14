@@ -23,7 +23,7 @@ export function SiteHeader() {
             Whitepaper
           </Link>
           <Link
-            href="#contacto"
+            href="/#contacto"
             className="shrink-0 rounded-sm bg-[#0f1f4a] px-2.5 py-1.5 text-[#f4f0e6] transition-colors hover:bg-[#1a3a7a] sm:px-4 sm:py-2"
           >
             Contacto
