@@ -14,9 +14,12 @@ const LeadSchema = z.object({
   // consentimiento para enviar el whitepaper).
   consentimiento_lpdp: z
     .string()
+    .nullish()
     .refine((v) => v === "on", "Debes aceptar la Política de Privacidad para continuar."),
   // Checkbox 2 — opcional, NO gatea el envío (opt-in a comunicaciones comerciales).
-  acepta_comunicaciones_comerciales: z.string().optional(),
+  // .nullish() (no solo .optional()): un checkbox sin marcar NO aparece en
+  // FormData, así que formData.get() devuelve null, no undefined.
+  acepta_comunicaciones_comerciales: z.string().nullish(),
 });
 
 export type SubmitLeadState = {
