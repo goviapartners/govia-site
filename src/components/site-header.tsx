@@ -14,6 +14,9 @@ export function SiteHeader() {
           <Link href="/trust-architecture-framework" className="hover:text-[#0f1f4a]">
             Framework
           </Link>
+          <Link href="/trust-maturity-score" className="hover:text-[#0f1f4a]">
+            Diagnóstico
+          </Link>
           <Link href="/whitepaper-git" className="hover:text-[#0f1f4a]">
             Whitepaper
           </Link>
