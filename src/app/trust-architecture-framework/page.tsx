@@ -3,10 +3,15 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
+const title = "Trust Architecture Framework (TAF) | Govia Partners";
+const description =
+  "El TAF mide y eleva la madurez de confianza de datos de una organización en 4 pilares y 5 niveles. Conoce el Trust Maturity Score (TMS) de Govia Partners.";
+
 export const metadata: Metadata = {
-  title: "Trust Architecture Framework (TAF) | Govia Partners",
-  description:
-    "El TAF mide y eleva la madurez de confianza de datos de una organización en 4 pilares y 5 niveles. Conoce el Trust Maturity Score (TMS) de Govia Partners.",
+  title,
+  description,
+  openGraph: { title, description, images: ["/opengraph-image"] },
+  twitter: { card: "summary_large_image", title, description, images: ["/opengraph-image"] },
 };
 
 const PILARES = [

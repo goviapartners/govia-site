@@ -3,10 +3,15 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { LeadForm } from "./lead-form";
 
+const title = "Git para DataGovOps — Whitepaper | Govia Partners";
+const description =
+  "Cómo aplicar disciplina de control de versiones al gobierno de datos. Descarga el whitepaper de Govia Partners.";
+
 export const metadata: Metadata = {
-  title: "Git para DataGovOps — Whitepaper | Govia Partners",
-  description:
-    "Cómo aplicar disciplina de control de versiones al gobierno de datos. Descarga el whitepaper de Govia Partners.",
+  title,
+  description,
+  openGraph: { title, description, images: ["/opengraph-image"] },
+  twitter: { card: "summary_large_image", title, description, images: ["/opengraph-image"] },
 };
 
 /*

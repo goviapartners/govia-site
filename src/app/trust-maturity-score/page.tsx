@@ -3,10 +3,15 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import TMSAssessmentForm from "@/components/tms-assessment-form";
 
+const title = "Trust Maturity Score — Diagnóstico gratuito de madurez de datos | Govia Partners";
+const description =
+  "21 preguntas. 4 pilares. Descubre tu Trust Maturity Score (TMS) y el cuello de botella de datos de tu organización. Diagnóstico gratuito basado en el TAF de Govia Partners.";
+
 export const metadata: Metadata = {
-  title: "Trust Maturity Score — Diagnóstico gratuito de madurez de datos | Govia Partners",
-  description:
-    "21 preguntas. 4 pilares. Descubre tu Trust Maturity Score (TMS) y el cuello de botella de datos de tu organización. Diagnóstico gratuito basado en el TAF de Govia Partners.",
+  title,
+  description,
+  openGraph: { title, description, images: ["/opengraph-image"] },
+  twitter: { card: "summary_large_image", title, description, images: ["/opengraph-image"] },
 };
 
 const isAssessmentLive = process.env.NEXT_PUBLIC_ASSESSMENT_LIVE === "true";

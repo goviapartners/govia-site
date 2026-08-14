@@ -2,8 +2,14 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { POLITICA_PRIVACIDAD_VERSION } from "@/lib/legal";
 
+const title = "Política de Privacidad | Govia Partners";
+const description = "Cómo Govia Partners trata los datos personales de quienes visitan e interactúan con este sitio.";
+
 export const metadata = {
-  title: "Política de Privacidad | Govia Partners",
+  title,
+  description,
+  openGraph: { title, description, images: ["/opengraph-image"] },
+  twitter: { card: "summary_large_image", title, description, images: ["/opengraph-image"] },
 };
 
 /*
