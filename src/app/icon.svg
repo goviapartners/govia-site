@@ -1,9 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
   <circle cx="100" cy="100" r="100" fill="#F4F0E6"/>
-  <path d="M 100 20 A 80 80 0 1 1 20.4 58" fill="none" stroke="#1A3A7A" stroke-width="11" stroke-linecap="round"/>
-  <path d="M 20.4 58 A 80 80 0 0 1 100 20" fill="none" stroke="#C9952A" stroke-width="11" stroke-linecap="round"/>
-  <line x1="100" y1="100" x2="150" y2="100" stroke="#1A3A7A" stroke-width="10" stroke-linecap="round"/>
-  <line x1="150" y1="100" x2="150" y2="126" stroke="#1A3A7A" stroke-width="10" stroke-linecap="round"/>
-  <circle cx="100" cy="100" r="12" fill="#C9952A"/>
-  <circle cx="150" cy="100" r="6.5" fill="#C9952A"/>
+  <g transform="translate(11.05,0.77)">
+    <path d="M 100 20 A 80 80 0 1 1 20.4 58" fill="none" stroke="#1A3A7A" stroke-width="11" stroke-linecap="round"/>
+    <path d="M 20.4 58 A 80 80 0 0 1 100 20" fill="none" stroke="#C9952A" stroke-width="11" stroke-linecap="round"/>
+    <line x1="100" y1="100" x2="150" y2="100" stroke="#1A3A7A" stroke-width="10" stroke-linecap="round"/>
+    <line x1="150" y1="100" x2="150" y2="126" stroke="#1A3A7A" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="100" cy="100" r="12" fill="#C9952A"/>
+    <circle cx="150" cy="100" r="6.5" fill="#C9952A"/>
+  </g>
 </svg>

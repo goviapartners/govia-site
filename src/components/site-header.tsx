@@ -9,7 +9,7 @@ export function SiteHeader() {
           href="/"
           className="flex shrink-0 items-center gap-2 font-serif text-base tracking-tight whitespace-nowrap text-[#0f1f4a] sm:text-xl"
         >
-          <GoviaMark size={24} className="hidden shrink-0 sm:block" />
+          <GoviaMark size={30} className="hidden shrink-0 sm:block" />
           Govia Partners
         </Link>
         <nav className="flex items-center gap-2.5 text-xs font-medium text-[#3a4866] sm:gap-6 sm:text-sm">
