@@ -1,4 +1,7 @@
 import { Resend } from "resend";
+import { TMS_MATURITY_LABELS, TMS_PILAR_LABELS } from "@/types/tms";
+import type { TMSScores } from "@/types/tms";
+import { getTMSColor } from "@/lib/tms-data";
 
 /**
  * Entrega del whitepaper por email transaccional (spec §3, opción b —
@@ -54,6 +57,108 @@ export async function sendWhitepaperEmail(params: {
     return { sent: true as const };
   } catch (err) {
     console.error("[resend] Excepción al enviar:", err);
+    return { sent: false as const, reason: "exception" as const };
+  }
+}
+
+/**
+ * Entrega del resultado del Trust Maturity Score por email — best-effort,
+ * nunca bloquea la respuesta al usuario (el resultado ya se muestra en
+ * pantalla; el email es una copia de respaldo + apertura del canal).
+ */
+export async function sendTMSResultEmail(params: {
+  nombre: string;
+  email: string;
+  scores: TMSScores;
+  gapProfile: string;
+}) {
+  const apiKey = process.env.RESEND_API_KEY;
+  const from = process.env.RESEND_FROM_EMAIL;
+
+  if (!apiKey || !from) {
+    console.warn(
+      "[resend] RESEND_API_KEY/RESEND_FROM_EMAIL no configurados — email de TMS no enviado."
+    );
+    return { sent: false as const, reason: "not_configured" as const };
+  }
+
+  const resend = new Resend(apiKey);
+  const { nombre, email, scores, gapProfile } = params;
+  const color = getTMSColor(scores.tms);
+  const maturityLabel = TMS_MATURITY_LABELS[scores.maturity_level];
+  const calendlyUrl =
+    process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/goviapartners/trust-cartography";
+
+  const pilarRows = [
+    { label: TMS_PILAR_LABELS.FD, norm: scores.fd_norm },
+    { label: TMS_PILAR_LABELS.MG, norm: scores.mg_norm },
+    { label: TMS_PILAR_LABELS.EC, norm: scores.ec_norm },
+    { label: TMS_PILAR_LABELS.CC, norm: scores.cc_norm },
+  ];
+
+  const cuerpo = `<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Tu Trust Maturity Score</title></head>
+<body style="margin:0;padding:0;background:#f4f0e6;font-family:system-ui,-apple-system,sans-serif;color:#0f1f4a;">
+  <div style="max-width:520px;margin:0 auto;padding:32px 24px;">
+    <div style="text-align:center;margin-bottom:32px;">
+      <span style="font-size:13px;color:#3a4866;letter-spacing:0.08em;text-transform:uppercase;">Govia Partners</span>
+    </div>
+    <div style="background:#fdfcf9;border:1px solid #ece6d6;border-radius:8px;padding:32px 24px;text-align:center;margin-bottom:20px;">
+      <p style="margin:0 0 8px;font-size:12px;color:#3a4866;text-transform:uppercase;letter-spacing:0.06em;">Trust Maturity Score</p>
+      <p style="margin:0;font-size:64px;font-weight:900;line-height:1;color:${color};">${scores.tms}</p>
+      <p style="margin:12px 0 0;font-size:13px;color:${color};font-weight:600;">Nivel ${scores.maturity_level} — ${maturityLabel}</p>
+    </div>
+    <p style="font-size:15px;line-height:1.6;margin:0 0 24px;">Hola <strong>${nombre}</strong>, aquí están los resultados de tu diagnóstico de madurez de datos.</p>
+    <div style="background:#fdfcf9;border:1px solid #ece6d6;border-radius:8px;padding:24px;margin-bottom:20px;">
+      <p style="margin:0 0 16px;font-size:12px;color:#3a4866;text-transform:uppercase;letter-spacing:0.06em;">Scores por pilar</p>
+      ${pilarRows
+        .map(
+          (p) => `
+      <div style="margin-bottom:12px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+          <span style="font-size:13px;color:#3a4866;">${p.label}</span>
+          <span style="font-size:13px;font-weight:700;color:#0f1f4a;">${p.norm}</span>
+        </div>
+        <div style="height:6px;background:#ece6d6;border-radius:3px;overflow:hidden;">
+          <div style="height:100%;width:${p.norm}%;background:${getTMSColor(p.norm)};border-radius:3px;"></div>
+        </div>
+      </div>`
+        )
+        .join("")}
+    </div>
+    <div style="background:#fdfcf9;border:1px solid #c9952a;border-radius:8px;padding:20px;margin-bottom:20px;">
+      <p style="margin:0 0 8px;font-size:12px;color:#9c7a3a;text-transform:uppercase;letter-spacing:0.06em;">Tu perfil de brecha</p>
+      <p style="margin:0;font-size:14px;font-weight:500;color:#0f1f4a;line-height:1.5;">${gapProfile}</p>
+    </div>
+    <div style="background:#ece6d6;border:1px solid #c9952a;border-radius:8px;padding:24px;text-align:center;margin-bottom:32px;">
+      <p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#0f1f4a;">¿Quieres un plan de mejora detallado?</p>
+      <p style="margin:0 0 20px;font-size:13px;color:#3a4866;line-height:1.5;">Solicita una Trust Cartography gratuita de 30 minutos.<br/>Revisamos tu TMS y definimos los 3 próximos pasos concretos.</p>
+      <a href="${calendlyUrl}" style="display:inline-block;background:#c9952a;color:#0f1f4a;font-weight:700;font-size:14px;padding:12px 28px;border-radius:4px;text-decoration:none;">Solicitar Trust Cartography</a>
+    </div>
+    <div style="text-align:center;border-top:1px solid #ece6d6;padding-top:20px;">
+      <p style="margin:0 0 4px;font-size:12px;color:#3a4866;">Govia Partners — DataGovOps</p>
+      <p style="margin:0;font-size:11px;color:#3a4866;">Este diagnóstico fue completado por ti y tus datos se tratan según nuestra <a href="https://goviapartners.com/privacidad" style="color:#3a4866;">Política de Privacidad</a>.</p>
+    </div>
+  </div>
+</body>
+</html>`;
+
+  try {
+    const { error } = await resend.emails.send({
+      from,
+      to: email,
+      subject: `Tu Trust Maturity Score: ${scores.tms}/100 — ${maturityLabel}`,
+      html: cuerpo,
+    });
+
+    if (error) {
+      console.error("[resend] Error al enviar TMS:", error);
+      return { sent: false as const, reason: "send_error" as const };
+    }
+    return { sent: true as const };
+  } catch (err) {
+    console.error("[resend] Excepción al enviar TMS:", err);
     return { sent: false as const, reason: "exception" as const };
   }
 }
