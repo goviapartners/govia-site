@@ -100,6 +100,34 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Portafolio — FlowPrep (producto distinto, audiencia distinta) */}
+        <section className="bg-[#fdfcf9]">
+          <div className="mx-auto max-w-3xl px-6 py-16">
+            <div className="rounded-sm border border-[#ece6d6] p-8 text-center sm:p-10">
+              <p className="font-mono text-xs uppercase tracking-widest text-[#0e8478]">
+                También en el portafolio de Govia
+              </p>
+              <h2 className="mt-3 font-serif text-2xl text-[#0f1f4a]">
+                Certificación DAMA-DMBOK para tu equipo
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#3a4866]">
+                FlowPrep prepara a profesionales de datos para la certificación
+                CDMP — el mismo estándar DAMA-DMBOK que gobierna nuestro
+                trabajo de consultoría. Es un producto propio, separado de
+                nuestros servicios de gobierno de datos.
+              </p>
+              <a
+                href={process.env.NEXT_PUBLIC_FLOWPREP_URL ?? "https://flowprep-data.vercel.app"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-block rounded-sm border border-[#0f1f4a] px-6 py-2.5 text-sm font-semibold text-[#0f1f4a] transition-colors hover:bg-[#0f1f4a] hover:text-[#f4f0e6]"
+              >
+                Conocer FlowPrep
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Contacto */}
         <section id="contacto" className="bg-[#f4f0e6]">
           <div className="mx-auto max-w-2xl px-6 py-24 text-center">
