@@ -11,6 +11,9 @@ export function SiteHeader() {
           Govia Partners
         </Link>
         <nav className="flex items-center gap-6 text-sm font-medium text-[#3a4866]">
+          <Link href="/trust-architecture-framework" className="hover:text-[#0f1f4a]">
+            Framework
+          </Link>
           <Link href="/whitepaper-git" className="hover:text-[#0f1f4a]">
             Whitepaper
           </Link>
