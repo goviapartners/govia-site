@@ -56,6 +56,30 @@ export function LeadForm() {
           className="mt-1 w-full rounded-sm border border-[#ece6d6] bg-white px-3 py-2 text-sm text-[#0f1f4a] focus:border-[#c9952a] focus:outline-none"
         />
       </div>
+
+      <p className="text-xs leading-relaxed text-[#3a4866]">
+        Al enviar este formulario, GOVIA PARTNERS S.A.C.S. tratará tu nombre,
+        correo electrónico y empresa para enviarte el whitepaper solicitado.
+        Tus datos se almacenan en Supabase y se procesan a través de Vercel y
+        Resend, con infraestructura fuera del Perú (Estados Unidos), bajo
+        garantías contractuales de protección de datos. Puedes ejercer tus
+        derechos de acceso, rectificación, supresión y oposición escribiendo a{" "}
+        <a href="mailto:privacidad@goviapartners.com" className="underline hover:text-[#0f1f4a]">
+          privacidad@goviapartners.com
+        </a>
+        . Más información en nuestra{" "}
+        <a
+          href="/privacidad"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-[#0f1f4a]"
+        >
+          Política de Privacidad
+        </a>
+        .
+      </p>
+
+      {/* Checkbox 1 — obligatorio, gatea el envío. */}
       <label className="flex items-start gap-2 text-xs text-[#3a4866]">
         <input
           type="checkbox"
@@ -64,12 +88,31 @@ export function LeadForm() {
           className="mt-0.5"
         />
         <span>
-          Acepto que Govia Partners use estos datos para enviarme el
-          whitepaper y comunicaciones comerciales relacionadas, conforme a la{" "}
-          <a href="/privacidad" className="underline hover:text-[#0f1f4a]">
-            política de privacidad
+          He leído y acepto la{" "}
+          <a
+            href="/privacidad"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-[#0f1f4a]"
+          >
+            Política de Privacidad
           </a>
-          . Puedo darme de baja cuando quiera.
+          . Autorizo a Govia Partners a tratar mis datos (nombre, correo y
+          empresa) para enviarme el whitepaper solicitado.
+        </span>
+      </label>
+
+      {/* Checkbox 2 — opcional, NO gatea el envío. */}
+      <label className="flex items-start gap-2 text-xs text-[#3a4866]">
+        <input
+          type="checkbox"
+          name="acepta_comunicaciones_comerciales"
+          className="mt-0.5"
+        />
+        <span>
+          Además, quiero recibir comunicaciones comerciales de Govia Partners
+          sobre sus servicios de gobierno de datos y cumplimiento normativo.
+          Puedo darme de baja cuando quiera.
         </span>
       </label>
 

@@ -1,16 +1,22 @@
 "use server";
 
+import { headers } from "next/headers";
 import { z } from "zod";
 import { getSupabaseServerClient } from "@/lib/supabase-server";
 import { sendWhitepaperEmail } from "@/lib/resend";
+import { POLITICA_PRIVACIDAD_VERSION } from "@/lib/legal";
 
 const LeadSchema = z.object({
   nombre: z.string().trim().min(2, "Ingresa tu nombre completo."),
   email: z.string().trim().email("Ingresa un email válido."),
   empresa: z.string().trim().min(2, "Ingresa el nombre de tu empresa."),
+  // Checkbox 1 — obligatorio, gatea el envío (política de privacidad +
+  // consentimiento para enviar el whitepaper).
   consentimiento_lpdp: z
     .string()
-    .refine((v) => v === "on", "Debes aceptar el consentimiento para continuar."),
+    .refine((v) => v === "on", "Debes aceptar la Política de Privacidad para continuar."),
+  // Checkbox 2 — opcional, NO gatea el envío (opt-in a comunicaciones comerciales).
+  acepta_comunicaciones_comerciales: z.string().optional(),
 });
 
 export type SubmitLeadState = {
@@ -27,6 +33,7 @@ export async function submitLead(
     email: formData.get("email"),
     empresa: formData.get("empresa"),
     consentimiento_lpdp: formData.get("consentimiento_lpdp"),
+    acepta_comunicaciones_comerciales: formData.get("acepta_comunicaciones_comerciales"),
   });
 
   if (!parsed.success) {
@@ -36,7 +43,13 @@ export async function submitLead(
     };
   }
 
-  const { nombre, email, empresa } = parsed.data;
+  const { nombre, email, empresa, acepta_comunicaciones_comerciales } = parsed.data;
+
+  // Evidencia de consentimiento (Reglamento D.S. 016-2024-JUS art. 9 — la
+  // carga de la prueba del consentimiento recae en Govia, no en el titular).
+  const requestHeaders = await headers();
+  const consentimientoIp =
+    requestHeaders.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null;
 
   const supabase = getSupabaseServerClient();
   const { error } = await supabase.from("leads_whitepaper").insert({
@@ -45,6 +58,9 @@ export async function submitLead(
     empresa,
     fuente: "LinkedIn-serie-git-datagovops",
     consentimiento_lpdp: true,
+    acepta_comunicaciones_comerciales: acepta_comunicaciones_comerciales === "on",
+    politica_version: POLITICA_PRIVACIDAD_VERSION,
+    consentimiento_ip: consentimientoIp,
   });
 
   // 23505 = email duplicado (ya tiene el PDF) → tratarlo como éxito silencioso,
