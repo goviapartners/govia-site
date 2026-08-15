@@ -242,6 +242,32 @@ export default function TafPage() {
           </div>
         </section>
 
+        {/* La Prueba del Regulador — gancho hacia el assessment gratuito */}
+        <section className="bg-[#f4f0e6]">
+          <div className="mx-auto max-w-2xl px-6 py-20 text-center">
+            <h2 className="font-serif text-3xl text-[#0f1f4a]">
+              La Prueba del Regulador
+            </h2>
+            <p className="mt-6 text-base leading-relaxed text-[#3a4866]">
+              Antes de calcular tu Trust Maturity Score, una pregunta que
+              puedes responderte ahora mismo, sin herramienta:
+            </p>
+            <p className="mx-auto mt-8 max-w-lg border-y border-[#c9952a]/40 py-6 font-serif text-xl leading-snug text-[#0f1f4a] italic">
+              &ldquo;Si un regulador te pidiera hoy el linaje completo de tu
+              KPI más citado, ¿podrías mostrarlo en menos de 5 minutos?&rdquo;
+            </p>
+            <p className="mt-8 text-base leading-relaxed text-[#3a4866]">
+              Si la respuesta es no, acabas de sentir tu Deuda de Confianza.
+            </p>
+            <Link
+              href="/trust-maturity-score"
+              className="mt-8 inline-block rounded-sm bg-[#c9952a] px-6 py-3 font-semibold text-[#0f1f4a] transition-colors hover:bg-[#e8b84a]"
+            >
+              Calcula tu TMS real →
+            </Link>
+          </div>
+        </section>
+
         {/* CTA final */}
         <section id="contacto" className="bg-[#ece6d6]">
           <div className="mx-auto max-w-2xl px-6 py-24 text-center">
