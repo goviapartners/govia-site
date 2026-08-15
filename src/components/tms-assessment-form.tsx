@@ -233,7 +233,7 @@ export default function TMSAssessmentForm() {
                   empresa, industria y tamaño de empresa para calcular tu diagnóstico y enviarte
                   los resultados. Los scores agregados y anonimizados podrán usarse en el reporte
                   sectorial &ldquo;Estado de la Madurez de Datos en Empresas Peruanas&rdquo;. Tus
-                  datos se almacenan en Supabase y se procesan a través de Vercel y Resend, con
+                  datos se almacenan en Neon y se procesan a través de Vercel y Resend, con
                   infraestructura fuera del Perú (Estados Unidos), bajo garantías contractuales de
                   protección de datos. Puedes ejercer tus derechos de acceso, rectificación,
                   supresión y oposición escribiendo a{" "}

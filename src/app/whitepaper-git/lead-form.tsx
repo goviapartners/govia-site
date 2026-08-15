@@ -60,7 +60,7 @@ export function LeadForm() {
       <p className="text-xs leading-relaxed text-[#3a4866]">
         Al enviar este formulario, GOVIA PARTNERS S.A.C.S. tratará tu nombre,
         correo electrónico y empresa para enviarte el whitepaper solicitado.
-        Tus datos se almacenan en Supabase y se procesan a través de Vercel y
+        Tus datos se almacenan en Neon y se procesan a través de Vercel y
         Resend, con infraestructura fuera del Perú (Estados Unidos), bajo
         garantías contractuales de protección de datos. Puedes ejercer tus
         derechos de acceso, rectificación, supresión y oposición escribiendo a{" "}
