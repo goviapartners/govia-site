@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 // Self-hosted (no build-time fetch to Google Fonts — avoids CDN flakiness
@@ -31,10 +32,26 @@ const jetBrainsMono = localFont({
   ],
 });
 
+const description =
+  "DataGovOps y CDO Fraccional para convertir deuda de datos en activos estratégicos que habilitan IA confiable.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://goviapartners.com"),
   title: "Govia Partners — La arquitectura de la confianza",
-  description:
-    "DataGovOps y CDO Fraccional para convertir deuda de datos en activos estratégicos que habilitan IA confiable.",
+  description,
+  openGraph: {
+    title: "Govia Partners — La arquitectura de la confianza",
+    description,
+    url: "https://goviapartners.com",
+    siteName: "Govia Partners",
+    locale: "es_PE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Govia Partners — La arquitectura de la confianza",
+    description,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -45,6 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col bg-[#F4F0E6] text-[#0F1F4A] font-sans">
         {children}
+        <Analytics />
       </body>
     </html>
   );
