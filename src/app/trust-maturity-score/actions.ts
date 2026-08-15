@@ -2,7 +2,7 @@
 
 import { headers } from "next/headers";
 import { z } from "zod";
-import { getSupabaseServerClient } from "@/lib/supabase-server";
+import { getDb, isPgError } from "@/lib/db";
 import { sendTMSResultEmail } from "@/lib/resend";
 import { POLITICA_PRIVACIDAD_VERSION } from "@/lib/legal";
 import { calculateTMSScores, getGapProfile, TMS_QUESTIONS } from "@/lib/tms-data";
@@ -72,33 +72,22 @@ export async function submitTMSAssessment(input: {
   const requestHeaders = await headers();
   const consentimientoIp = requestHeaders.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null;
 
-  const supabase = getSupabaseServerClient();
-  const { error: insertError } = await supabase.from("tms_assessments").insert({
-    nombre: registration.nombre,
-    email: registration.email,
-    empresa: registration.empresa,
-    industria: registration.industria,
-    tamano_empresa: registration.tamano_empresa,
-    fd_score: scores.fd_score,
-    mg_score: scores.mg_score,
-    ec_score: scores.ec_score,
-    cc_score: scores.cc_score,
-    fd_norm: scores.fd_norm,
-    mg_norm: scores.mg_norm,
-    ec_norm: scores.ec_norm,
-    cc_norm: scores.cc_norm,
-    tms: scores.tms,
-    maturity_level: scores.maturity_level,
-    gap_profile: gapProfile,
-    respuestas: answers,
-    consentimiento_lpdp: true,
-    acepta_comunicaciones_comerciales: registration.acepta_comunicaciones_comerciales,
-    politica_version: POLITICA_PRIVACIDAD_VERSION,
-    consentimiento_ip: consentimientoIp,
-  });
-
-  if (insertError) {
-    console.error("[tms/submit] Supabase error:", insertError.message);
+  const sql = getDb();
+  try {
+    await sql`
+      INSERT INTO tms_assessments
+        (nombre, email, empresa, industria, tamano_empresa, fd_score, mg_score, ec_score, cc_score,
+         fd_norm, mg_norm, ec_norm, cc_norm, tms, maturity_level, gap_profile, respuestas,
+         consentimiento_lpdp, acepta_comunicaciones_comerciales, politica_version, consentimiento_ip)
+      VALUES
+        (${registration.nombre}, ${registration.email}, ${registration.empresa}, ${registration.industria},
+         ${registration.tamano_empresa}, ${scores.fd_score}, ${scores.mg_score}, ${scores.ec_score}, ${scores.cc_score},
+         ${scores.fd_norm}, ${scores.mg_norm}, ${scores.ec_norm}, ${scores.cc_norm}, ${scores.tms},
+         ${scores.maturity_level}, ${gapProfile}, ${JSON.stringify(answers)}::jsonb,
+         true, ${registration.acepta_comunicaciones_comerciales}, ${POLITICA_PRIVACIDAD_VERSION}, ${consentimientoIp})
+    `;
+  } catch (err) {
+    console.error("[tms/submit] Postgres error:", isPgError(err) ? err.message : err);
     return {
       status: "error",
       message: "No pudimos guardar tu diagnóstico. Intenta de nuevo en unos minutos.",
@@ -107,21 +96,22 @@ export async function submitTMSAssessment(input: {
 
   // Benchmark agregado — best-effort, un fallo no debe bloquear el resultado.
   let benchmark: TMSBenchmark = { overall_avg: 0, count: 0, industry_avg: null, industry_count: 0 };
-  const { data: benchData, error: benchError } = await supabase.rpc("get_tms_benchmark", {
-    p_industria: registration.industria,
-  });
-  if (!benchError && benchData?.[0]) {
-    const row = benchData[0];
-    benchmark = {
-      overall_avg: Number(row.overall_avg ?? 0),
-      count: Number(row.overall_count ?? 0),
-      industry_avg: row.industria_avg !== null ? Number(row.industria_avg) : null,
-      industry_count: Number(row.industria_count ?? 0),
-    };
+  try {
+    const [row] = await sql`SELECT * FROM get_tms_benchmark(${registration.industria})`;
+    if (row) {
+      benchmark = {
+        overall_avg: Number(row.overall_avg ?? 0),
+        count: Number(row.overall_count ?? 0),
+        industry_avg: row.industria_avg !== null ? Number(row.industria_avg) : null,
+        industry_count: Number(row.industria_count ?? 0),
+      };
+    }
+  } catch (err) {
+    console.error("[tms/submit] benchmark error (non-fatal):", isPgError(err) ? err.message : err);
   }
 
   // Email de resultados — nunca bloquea el éxito de la captura (ya está en
-  // Supabase, que es la parte crítica). Un fallo de Resend solo se loguea.
+  // la DB, que es la parte crítica). Un fallo de Resend solo se loguea.
   await sendTMSResultEmail({
     nombre: registration.nombre,
     email: registration.email,

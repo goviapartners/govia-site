@@ -2,7 +2,7 @@
 
 import { headers } from "next/headers";
 import { z } from "zod";
-import { getSupabaseServerClient } from "@/lib/supabase-server";
+import { getDb, isPgError } from "@/lib/db";
 import { sendWhitepaperEmail } from "@/lib/resend";
 import { POLITICA_PRIVACIDAD_VERSION } from "@/lib/legal";
 
@@ -54,29 +54,28 @@ export async function submitLead(
   const consentimientoIp =
     requestHeaders.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null;
 
-  const supabase = getSupabaseServerClient();
-  const { error } = await supabase.from("leads_whitepaper").insert({
-    nombre,
-    email,
-    empresa,
-    fuente: "LinkedIn-serie-git-datagovops",
-    consentimiento_lpdp: true,
-    acepta_comunicaciones_comerciales: acepta_comunicaciones_comerciales === "on",
-    politica_version: POLITICA_PRIVACIDAD_VERSION,
-    consentimiento_ip: consentimientoIp,
-  });
-
-  // 23505 = email duplicado (ya tiene el PDF) → tratarlo como éxito silencioso,
-  // cualquier otro error de Supabase sí se reporta al usuario.
-  if (error && error.code !== "23505") {
-    return {
-      status: "error",
-      message: "No pudimos registrar tu descarga. Intenta de nuevo en unos minutos.",
-    };
+  const sql = getDb();
+  try {
+    await sql`
+      INSERT INTO leads_whitepaper
+        (nombre, email, empresa, fuente, consentimiento_lpdp, acepta_comunicaciones_comerciales, politica_version, consentimiento_ip)
+      VALUES
+        (${nombre}, ${email}, ${empresa}, 'LinkedIn-serie-git-datagovops', true,
+         ${acepta_comunicaciones_comerciales === "on"}, ${POLITICA_PRIVACIDAD_VERSION}, ${consentimientoIp})
+    `;
+  } catch (err) {
+    // 23505 = email duplicado (ya tiene el PDF) → tratarlo como éxito silencioso,
+    // cualquier otro error de Postgres sí se reporta al usuario.
+    if (!isPgError(err) || err.code !== "23505") {
+      return {
+        status: "error",
+        message: "No pudimos registrar tu descarga. Intenta de nuevo en unos minutos.",
+      };
+    }
   }
 
   // El envío de email nunca bloquea el éxito de la captura del lead — ya
-  // está en Supabase, que es la parte crítica. Un fallo de Resend solo se
+  // está en la DB, que es la parte crítica. Un fallo de Resend solo se
   // loguea server-side (ver src/lib/resend.ts).
   await sendWhitepaperEmail({
     nombre,

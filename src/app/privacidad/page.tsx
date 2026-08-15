@@ -163,7 +163,7 @@ export default function PrivacidadPage() {
                 </thead>
                 <tbody>
                   <tr className="border-b border-[#ece6d6]">
-                    <td className="py-2 pr-4">Supabase</td>
+                    <td className="py-2 pr-4">Neon</td>
                     <td className="py-2 pr-4">Almacenamiento de la base de datos de leads</td>
                     <td className="py-2">Estados Unidos</td>
                   </tr>
@@ -185,7 +185,7 @@ export default function PrivacidadPage() {
               Flujo transfronterizo de datos personales
             </h3>
             <p>
-              Debido a que Vercel, Supabase y Resend alojan infraestructura
+              Debido a que Vercel, Neon y Resend alojan infraestructura
               fuera del Perú (principalmente en Estados Unidos), el
               tratamiento de tus datos implica un flujo transfronterizo de
               datos personales. Estados Unidos no cuenta con una declaración
