@@ -24,3 +24,59 @@
 body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
+
+/* Artículos de /blog — estilos para el HTML generado desde Markdown
+   (marked). No usamos @tailwindcss/typography para no sumar una
+   dependencia solo para esto; el set de elementos es pequeño y estable. */
+.prose-govia h2 {
+  font-family: var(--font-serif);
+  color: var(--navy);
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-govia h3 {
+  font-family: var(--font-serif);
+  color: var(--navy);
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-govia p {
+  margin-top: 1.25rem;
+}
+
+.prose-govia p:first-child {
+  margin-top: 0;
+}
+
+.prose-govia strong {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.prose-govia a {
+  color: var(--azul);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-govia ul,
+.prose-govia ol {
+  margin-top: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose-govia ul {
+  list-style-type: disc;
+}
+
+.prose-govia ol {
+  list-style-type: decimal;
+}
+
+.prose-govia li + li {
+  margin-top: 0.5rem;
+}
