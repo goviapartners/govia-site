@@ -223,7 +223,7 @@ export function getGapProfile(scores: TMSScores): string {
 // ─── Colores por nivel (paleta Govia — teal editorial en el nivel 5) ───────
 
 export function getMaturityColor(level: number): string {
-  if (level >= 5) return "#0e8478"; // teal-editorial — Trust Architecture
+  if (level >= 5) return "#ce7b45"; // cobre (Altiplano) — Trust Architecture
   if (level >= 4) return "#22c55e"; // verde — Confiables
   if (level >= 3) return "#eab308"; // amarillo — Gobernados
   if (level >= 2) return "#f97316"; // naranja — Controlados
