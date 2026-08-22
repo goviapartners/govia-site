@@ -28,17 +28,17 @@ export default function TrustMaturityScorePage() {
 
 function ComingSoon() {
   return (
-    <section className="bg-[#f4f0e6]">
+    <section className="bg-[#e8e3d6]">
       <div className="mx-auto max-w-2xl px-6 py-28 text-center">
-        <h1 className="font-serif text-3xl text-[#0f1f4a] sm:text-4xl">
+        <h1 className="font-serif text-3xl text-[#0a1416] sm:text-4xl">
           Trust Maturity Score — próximamente
         </h1>
-        <p className="mt-6 text-base text-[#3a4866]">
+        <p className="mt-6 text-base text-[#0a1416]/70">
           Estamos afinando el diagnóstico. Escríbenos y te avisamos apenas esté disponible.
         </p>
         <a
           href="mailto:contacto@goviapartners.com?subject=Aviso%20Trust%20Maturity%20Score"
-          className="mt-8 inline-block rounded-sm bg-[#0f1f4a] px-6 py-3 font-semibold text-[#f4f0e6] transition-colors hover:bg-[#1a3a7a]"
+          className="mt-8 inline-block rounded-sm bg-[#8f5022] px-6 py-3 font-semibold text-[#f5f2ea] transition-colors hover:bg-[#ce7b45]"
         >
           Avísenme cuando esté listo
         </a>

@@ -103,7 +103,7 @@ export default function TMSRadarChart({ scores, benchmarkScores, size = 320 }: T
       ctx.stroke();
 
       ctx.save();
-      ctx.fillStyle = "rgba(15,31,74,0.35)";
+      ctx.fillStyle = "rgba(10,20,22,0.35)";
       ctx.font = `${Math.max(9, size * 0.024)}px system-ui,sans-serif`;
       ctx.textAlign = "right";
       ctx.textBaseline = "middle";
@@ -117,7 +117,7 @@ export default function TMSRadarChart({ scores, benchmarkScores, size = 320 }: T
       ctx.beginPath();
       ctx.moveTo(cx, cy);
       ctx.lineTo(cx + maxR * Math.cos(angle), cy + maxR * Math.sin(angle));
-      ctx.strokeStyle = "rgba(15,31,74,0.14)";
+      ctx.strokeStyle = "rgba(10,20,22,0.14)";
       ctx.lineWidth = 1;
       ctx.stroke();
     }
@@ -135,16 +135,16 @@ export default function TMSRadarChart({ scores, benchmarkScores, size = 320 }: T
         else ctx.lineTo(x, y);
       }
       ctx.closePath();
-      ctx.fillStyle = "rgba(15,31,74,0.04)";
+      ctx.fillStyle = "rgba(10,20,22,0.04)";
       ctx.fill();
-      ctx.strokeStyle = "rgba(15,31,74,0.35)";
+      ctx.strokeStyle = "rgba(10,20,22,0.35)";
       ctx.lineWidth = 1.5;
       ctx.setLineDash([4, 5]);
       ctx.stroke();
       ctx.setLineDash([]);
     }
 
-    // Polígono del resultado (oro — marca)
+    // Polígono del resultado (Cobre — único acento de marca, Altiplano)
     const values = PILAR_ORDER.map((p) => getPilarNorm(scores, p));
     ctx.beginPath();
     for (let i = 0; i <= n; i++) {
@@ -157,11 +157,11 @@ export default function TMSRadarChart({ scores, benchmarkScores, size = 320 }: T
     }
     ctx.closePath();
     const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxR);
-    grad.addColorStop(0, "rgba(201,149,42,0.35)");
-    grad.addColorStop(1, "rgba(201,149,42,0.10)");
+    grad.addColorStop(0, "rgba(206,123,69,0.35)");
+    grad.addColorStop(1, "rgba(206,123,69,0.10)");
     ctx.fillStyle = grad;
     ctx.fill();
-    ctx.strokeStyle = "rgba(201,149,42,0.95)";
+    ctx.strokeStyle = "rgba(206,123,69,0.95)";
     ctx.lineWidth = 2.5;
     ctx.stroke();
 
@@ -188,7 +188,7 @@ export default function TMSRadarChart({ scores, benchmarkScores, size = 320 }: T
       ctx.arc(px, py, 4, 0, Math.PI * 2);
       ctx.fillStyle = color;
       ctx.fill();
-      ctx.strokeStyle = "#fdfcf9";
+      ctx.strokeStyle = "#f5f2ea";
       ctx.lineWidth = 1.5;
       ctx.stroke();
 
@@ -202,7 +202,7 @@ export default function TMSRadarChart({ scores, benchmarkScores, size = 320 }: T
       if (Math.cos(angle) > 0.3) ctx.textAlign = "left";
       else if (Math.cos(angle) < -0.3) ctx.textAlign = "right";
 
-      ctx.fillStyle = "rgba(15,31,74,0.75)";
+      ctx.fillStyle = "rgba(10,20,22,0.75)";
       ctx.font = `600 ${fontSize}px system-ui,sans-serif`;
       ctx.fillText(SHORT_LABELS[pilar], lx, ly - 7);
 
@@ -223,12 +223,12 @@ export default function TMSRadarChart({ scores, benchmarkScores, size = 320 }: T
           return (
             <div key={pilar} className="flex flex-col gap-0.5">
               <div className="flex items-center justify-between gap-1">
-                <span className="truncate text-[11px] text-[#3a4866]">{TMS_PILAR_LABELS[pilar]}</span>
+                <span className="truncate text-[11px] text-[#0a1416]/70">{TMS_PILAR_LABELS[pilar]}</span>
                 <span className={cn("shrink-0 text-[11px] font-bold tabular-nums", getTextClass(norm))}>
                   {norm}
                 </span>
               </div>
-              <div className="h-1 overflow-hidden rounded-full bg-[#ece6d6]">
+              <div className="h-1 overflow-hidden rounded-full bg-[#dad4c4]">
                 <div className={cn("h-full rounded-full transition-all", getBarClass(norm))} style={{ width: `${norm}%` }} />
               </div>
             </div>

@@ -1,24 +1,29 @@
 @import "tailwindcss";
 
-/* Govia Brand Book v1.0 (Mayo 2026) — tokens B2C (editorial/marketing, fondos claros)
-   Fuente: ~/.govia/.claude/skills/diseno-govia/SKILL.md §2-3 */
+/* Sistema Altiplano (vigente desde ago-2026) — Modo Caliza, para marketing público.
+   Fuente: ~/.govia/.claude/skills/diseno-govia/SKILL.md §2-3 +
+   proyectos/_firma_govia/sistema-diseno/brand-book/altiplano-modes.css.
+   Reemplaza los tokens Ivory/Navy/Oro de Brand Book v1.0. */
 :root {
-  --ivory-base: #f4f0e6;
-  --ivory-deep: #ece6d6;
-  --paper-white: #fdfcf9;
-  --navy: #0f1f4a;
-  --azul: #1a3a7a;
-  --pizarra-calida: #3a4866;
-  --oro: #c9952a;
-  --oro-claro: #e8b84a;
-  --oro-suave: #9c7a3a;
-  --teal-editorial: #0e8478;
+  --caliza: #e8e3d6;
+  --caliza-2: #dad4c4;
+  --paper: #f5f2ea;
+  --ink: #0a1416;
+  /* Sin token oficial de Altiplano para "texto secundario sobre fondo claro"
+     (--ash está diseñado y probado solo sobre fondos oscuros, confirmado
+     contra altiplano-modes.css). Vacío real de la especificación, no un
+     descuido — se resuelve con --ink a opacidad reducida en vez de
+     inventar un color de marca nuevo sin aprobación de Brand. */
+  --ink-muted: rgb(10 20 22 / 70%);
+  --cobre: #ce7b45;
+  --cobre-claro: #e09a63;
+  --cobre-ink: #8f5022;
 }
 
 @theme inline {
-  --font-sans: var(--font-dm-sans);
-  --font-serif: var(--font-dm-serif-display);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-sans: var(--font-space-grotesk);
+  --font-serif: var(--font-bodoni-moda);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
 body {
@@ -30,7 +35,7 @@ body {
    dependencia solo para esto; el set de elementos es pequeño y estable. */
 .prose-govia h2 {
   font-family: var(--font-serif);
-  color: var(--navy);
+  color: var(--ink);
   font-size: 1.5rem;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
@@ -38,7 +43,7 @@ body {
 
 .prose-govia h3 {
   font-family: var(--font-serif);
-  color: var(--navy);
+  color: var(--ink);
   font-size: 1.25rem;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
@@ -53,12 +58,12 @@ body {
 }
 
 .prose-govia strong {
-  color: var(--navy);
+  color: var(--ink);
   font-weight: 700;
 }
 
 .prose-govia a {
-  color: var(--azul);
+  color: var(--cobre-ink);
   text-decoration: underline;
   text-underline-offset: 2px;
 }

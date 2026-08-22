@@ -231,7 +231,11 @@ export function getMaturityColor(level: number): string {
 }
 
 export function getTMSColor(tms: number): string {
-  if (tms >= 86) return "#0e8478";
+  // Nivel máximo (Trust Architecture) marcado con el acento de marca Altiplano
+  // — alcanzar ese nivel es literalmente la promesa de la marca. Las demás
+  // bandas (buena/regular/mala) son una rampa de severidad genérica, no de
+  // marca — se mantienen como estaban.
+  if (tms >= 86) return "#ce7b45";
   if (tms >= 66) return "#22c55e";
   if (tms >= 41) return "#eab308";
   if (tms >= 21) return "#f97316";

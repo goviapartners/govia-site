@@ -46,18 +46,18 @@ export default function WhitepaperGitPage() {
 
 function ComingSoon() {
   return (
-    <section className="bg-[#f4f0e6]">
+    <section className="bg-[#e8e3d6]">
       <div className="mx-auto max-w-2xl px-6 py-28 text-center">
-        <h1 className="font-serif text-3xl text-[#0f1f4a] sm:text-4xl">
+        <h1 className="font-serif text-3xl text-[#0a1416] sm:text-4xl">
           "Git para DataGovOps" — próximamente
         </h1>
-        <p className="mt-6 text-base text-[#3a4866]">
+        <p className="mt-6 text-base text-[#0a1416]/70">
           Estamos terminando el whitepaper. Escríbenos y te avisamos apenas
           esté disponible para descarga.
         </p>
         <a
           href="mailto:contacto@goviapartners.com?subject=Aviso%20whitepaper%20Git%20para%20DataGovOps"
-          className="mt-8 inline-block rounded-sm bg-[#0f1f4a] px-6 py-3 font-semibold text-[#f4f0e6] transition-colors hover:bg-[#1a3a7a]"
+          className="mt-8 inline-block rounded-sm bg-[#8f5022] px-6 py-3 font-semibold text-[#f5f2ea] transition-colors hover:bg-[#ce7b45]"
         >
           Avísenme cuando esté listo
         </a>
@@ -69,16 +69,16 @@ function ComingSoon() {
 function LandingLive() {
   return (
     <>
-      <section className="bg-[#f4f0e6]">
+      <section className="bg-[#e8e3d6]">
         <div className="mx-auto grid max-w-5xl gap-12 px-6 py-20 sm:grid-cols-2 sm:items-center">
           <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-[#0e8478]">
+            <p className="font-mono text-xs uppercase tracking-widest text-[#8f5022]">
               Whitepaper gratuito
             </p>
-            <h1 className="mt-3 font-serif text-4xl leading-tight text-[#0f1f4a]">
+            <h1 className="mt-3 font-serif text-4xl leading-tight text-[#0a1416]">
               Git para DataGovOps
             </h1>
-            <p className="mt-4 text-base leading-relaxed text-[#3a4866]">
+            <p className="mt-4 text-base leading-relaxed text-[#0a1416]/70">
               Control de versiones no es solo para código. Aplica los mismos
               principios que hicieron a Git indispensable en ingeniería de
               software a tu gobierno de datos — y deja de tratar tus políticas
@@ -88,15 +88,15 @@ function LandingLive() {
               {IDEAS.map((idea) => (
                 <li
                   key={idea}
-                  className="flex gap-3 text-sm text-[#3a4866]"
+                  className="flex gap-3 text-sm text-[#0a1416]/70"
                 >
-                  <span className="mt-0.5 font-mono text-[#c9952a]">→</span>
+                  <span className="mt-0.5 font-mono text-[#ce7b45]">→</span>
                   <span>{idea}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="rounded-sm border border-[#ece6d6] bg-[#fdfcf9] p-6">
+          <div className="rounded-sm border border-[#dad4c4] bg-[#f5f2ea] p-6">
             <LeadForm />
           </div>
         </div>

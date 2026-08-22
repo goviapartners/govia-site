@@ -94,15 +94,15 @@ export default function TafPage() {
       <SiteHeader />
       <main className="flex-1">
         {/* Hero */}
-        <section className="bg-[#f4f0e6]">
+        <section className="bg-[#e8e3d6]">
           <div className="mx-auto max-w-3xl px-6 py-24 text-center">
-            <p className="font-mono text-xs uppercase tracking-widest text-[#0e8478]">
+            <p className="font-mono text-xs uppercase tracking-widest text-[#8f5022]">
               Metodología propietaria de Govia Partners
             </p>
-            <h1 className="mt-3 font-serif text-4xl leading-tight text-[#0f1f4a] sm:text-5xl">
+            <h1 className="mt-3 font-serif text-4xl leading-tight text-[#0a1416] sm:text-5xl">
               Trust Architecture Framework
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-lg text-[#3a4866]">
+            <p className="mx-auto mt-6 max-w-xl text-lg text-[#0a1416]/70">
               El TAF es el modelo que usamos para medir, diseñar y elevar la
               madurez de confianza de datos de una organización — en cuatro
               pilares y cinco niveles.
@@ -110,13 +110,13 @@ export default function TafPage() {
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link
                 href="#contacto"
-                className="rounded-sm bg-[#c9952a] px-6 py-3 font-semibold text-[#0f1f4a] transition-colors hover:bg-[#e8b84a]"
+                className="rounded-sm bg-[#8f5022] px-6 py-3 font-semibold text-[#f5f2ea] transition-colors hover:bg-[#ce7b45]"
               >
                 Conversemos
               </Link>
               <Link
                 href="/whitepaper-git"
-                className="rounded-sm border border-[#0f1f4a] px-6 py-3 font-semibold text-[#0f1f4a] transition-colors hover:bg-[#0f1f4a] hover:text-[#f4f0e6]"
+                className="rounded-sm border border-[#0a1416] px-6 py-3 font-semibold text-[#0a1416] transition-colors hover:bg-[#0a1416] hover:text-[#e8e3d6]"
               >
                 Leer el whitepaper
               </Link>
@@ -125,12 +125,12 @@ export default function TafPage() {
         </section>
 
         {/* Qué es un Trust Architect */}
-        <section className="bg-[#fdfcf9]">
+        <section className="bg-[#f5f2ea]">
           <div className="mx-auto max-w-3xl px-6 py-20">
-            <h2 className="font-serif text-3xl text-[#0f1f4a]">
+            <h2 className="font-serif text-3xl text-[#0a1416]">
               No gobernamos datos. Diseñamos organizaciones confiables.
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-[#3a4866]">
+            <p className="mt-6 text-base leading-relaxed text-[#0a1416]/70">
               La gobernanza de datos tradicional resuelve el problema de
               ayer: demasiados sistemas, demasiada confusión. El problema de
               hoy es distinto — es un problema de confianza. Un modelo de IA
@@ -138,7 +138,7 @@ export default function TafPage() {
               de organizaciones en LATAM acumulan Deuda de Confianza sin
               saberlo.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-[#3a4866]">
+            <p className="mt-4 text-base leading-relaxed text-[#0a1416]/70">
               Un Trust Architect no llega a revisar políticas y entregar un
               informe. Llega a preguntar por qué las personas de una
               organización no confían en sus propios datos — y qué tendría
@@ -152,12 +152,12 @@ export default function TafPage() {
         </section>
 
         {/* 4 Pilares */}
-        <section className="bg-[#ece6d6]">
+        <section className="bg-[#dad4c4]">
           <div className="mx-auto max-w-4xl px-6 py-20">
-            <h2 className="font-serif text-3xl text-[#0f1f4a]">
+            <h2 className="font-serif text-3xl text-[#0a1416]">
               Los cuatro pilares del TAF
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#3a4866]">
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#0a1416]/70">
               Cada nivel de madurez se construye interviniendo los cuatro
               pilares al mismo tiempo. Avanzar en uno solo, sin los otros,
               crea una madurez frágil.
@@ -166,12 +166,12 @@ export default function TafPage() {
               {PILARES.map((pilar) => (
                 <div
                   key={pilar.nombre}
-                  className="rounded-sm border-t-4 border-[#c9952a] bg-[#fdfcf9] p-6"
+                  className="rounded-sm border-t-4 border-[#ce7b45] bg-[#f5f2ea] p-6"
                 >
-                  <h3 className="font-serif text-xl text-[#0f1f4a]">
+                  <h3 className="font-serif text-xl text-[#0a1416]">
                     {pilar.nombre}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#3a4866]">
+                  <p className="mt-3 text-sm leading-relaxed text-[#0a1416]/70">
                     {pilar.descripcion}
                   </p>
                 </div>
@@ -181,12 +181,12 @@ export default function TafPage() {
         </section>
 
         {/* 5 Niveles de madurez */}
-        <section className="bg-[#f4f0e6]">
+        <section className="bg-[#e8e3d6]">
           <div className="mx-auto max-w-3xl px-6 py-20">
-            <h2 className="font-serif text-3xl text-[#0f1f4a]">
+            <h2 className="font-serif text-3xl text-[#0a1416]">
               Cinco niveles de madurez de confianza
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-[#3a4866]">
+            <p className="mt-4 text-base leading-relaxed text-[#0a1416]/70">
               El Trust Maturity Score (TMS) ubica a una organización en uno
               de cinco niveles, de 0 a 100 puntos.
             </p>
@@ -194,16 +194,16 @@ export default function TafPage() {
               {NIVELES.map((nivel, i) => (
                 <div
                   key={nivel.nombre}
-                  className="flex flex-col gap-2 rounded-sm border border-[#ece6d6] bg-[#fdfcf9] p-6 sm:flex-row sm:items-center sm:gap-6"
+                  className="flex flex-col gap-2 rounded-sm border border-[#dad4c4] bg-[#f5f2ea] p-6 sm:flex-row sm:items-center sm:gap-6"
                 >
-                  <div className="shrink-0 font-mono text-sm text-[#c9952a]">
+                  <div className="shrink-0 font-mono text-sm text-[#8f5022]">
                     {nivel.score}
                   </div>
                   <div>
-                    <h3 className="font-serif text-lg text-[#0f1f4a]">
+                    <h3 className="font-serif text-lg text-[#0a1416]">
                       Nivel {i + 1} — {nivel.nombre}
                     </h3>
-                    <p className="mt-1 text-sm leading-relaxed text-[#3a4866]">
+                    <p className="mt-1 text-sm leading-relaxed text-[#0a1416]/70">
                       {nivel.descripcion}
                     </p>
                   </div>
@@ -214,12 +214,12 @@ export default function TafPage() {
         </section>
 
         {/* Deuda de Confianza */}
-        <section className="bg-[#fdfcf9]">
+        <section className="bg-[#f5f2ea]">
           <div className="mx-auto max-w-3xl px-6 py-20">
-            <h2 className="font-serif text-3xl text-[#0f1f4a]">
+            <h2 className="font-serif text-3xl text-[#0a1416]">
               La Deuda de Confianza
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-[#3a4866]">
+            <p className="mt-6 text-base leading-relaxed text-[#0a1416]/70">
               Cada vez que una organización decide con datos que no son
               confiables, acumula Deuda de Confianza. La mayoría de
               organizaciones en LATAM acumulan las tres formas a la vez — no
@@ -228,10 +228,10 @@ export default function TafPage() {
             </p>
             <ul className="mt-8 space-y-4">
               {DEUDAS.map((deuda) => (
-                <li key={deuda.nombre} className="flex gap-3 text-sm text-[#3a4866]">
-                  <span className="mt-0.5 font-mono text-[#c9952a]">→</span>
+                <li key={deuda.nombre} className="flex gap-3 text-sm text-[#0a1416]/70">
+                  <span className="mt-0.5 font-mono text-[#8f5022]">→</span>
                   <span>
-                    <span className="font-semibold text-[#0f1f4a]">
+                    <span className="font-semibold text-[#0a1416]">
                       {deuda.nombre}:
                     </span>{" "}
                     {deuda.descripcion}
@@ -243,25 +243,25 @@ export default function TafPage() {
         </section>
 
         {/* La Prueba del Regulador — gancho hacia el assessment gratuito */}
-        <section className="bg-[#f4f0e6]">
+        <section className="bg-[#e8e3d6]">
           <div className="mx-auto max-w-2xl px-6 py-20 text-center">
-            <h2 className="font-serif text-3xl text-[#0f1f4a]">
+            <h2 className="font-serif text-3xl text-[#0a1416]">
               La Prueba del Regulador
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-[#3a4866]">
+            <p className="mt-6 text-base leading-relaxed text-[#0a1416]/70">
               Antes de calcular tu Trust Maturity Score, una pregunta que
               puedes responderte ahora mismo, sin herramienta:
             </p>
-            <p className="mx-auto mt-8 max-w-lg border-y border-[#c9952a]/40 py-6 font-serif text-xl leading-snug text-[#0f1f4a] italic">
+            <p className="mx-auto mt-8 max-w-lg border-y border-[#ce7b45]/40 py-6 font-serif text-xl leading-snug text-[#0a1416] italic">
               &ldquo;Si un regulador te pidiera hoy el linaje completo de tu
               KPI más citado, ¿podrías mostrarlo en menos de 5 minutos?&rdquo;
             </p>
-            <p className="mt-8 text-base leading-relaxed text-[#3a4866]">
+            <p className="mt-8 text-base leading-relaxed text-[#0a1416]/70">
               Si la respuesta es no, acabas de sentir tu Deuda de Confianza.
             </p>
             <Link
               href="/trust-maturity-score"
-              className="mt-8 inline-block rounded-sm bg-[#c9952a] px-6 py-3 font-semibold text-[#0f1f4a] transition-colors hover:bg-[#e8b84a]"
+              className="mt-8 inline-block rounded-sm bg-[#8f5022] px-6 py-3 font-semibold text-[#f5f2ea] transition-colors hover:bg-[#ce7b45]"
             >
               Calcula tu TMS real →
             </Link>
@@ -269,23 +269,23 @@ export default function TafPage() {
         </section>
 
         {/* CTA final */}
-        <section id="contacto" className="bg-[#ece6d6]">
+        <section id="contacto" className="bg-[#dad4c4]">
           <div className="mx-auto max-w-2xl px-6 py-24 text-center">
-            <h2 className="font-serif text-3xl text-[#0f1f4a]">
+            <h2 className="font-serif text-3xl text-[#0a1416]">
               ¿En qué nivel está tu organización?
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-[#3a4866]">
+            <p className="mt-4 text-base leading-relaxed text-[#0a1416]/70">
               Nuestra Trust Cartography mide el Trust Maturity Score de tu
               organización en 4 a 6 semanas y entrega una hoja de ruta
               priorizada para avanzar de nivel.
             </p>
             <a
               href="mailto:contacto@goviapartners.com"
-              className="mt-8 inline-block rounded-sm bg-[#0f1f4a] px-8 py-3 font-semibold text-[#f4f0e6] transition-colors hover:bg-[#1a3a7a]"
+              className="mt-8 inline-block rounded-sm bg-[#8f5022] px-8 py-3 font-semibold text-[#f5f2ea] transition-colors hover:bg-[#ce7b45]"
             >
               contacto@goviapartners.com
             </a>
-            <p className="mt-10 text-xs text-[#3a4866]/70">
+            <p className="mt-10 text-xs text-[#0a1416]/50">
               El Trust Architecture Framework (TAF) es una metodología
               propietaria de Govia Partners.
             </p>
