@@ -6,11 +6,15 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = "Govia Partners — La arquitectura de la confianza";
 
+// next/og (Satori) no soporta woff2 (solo ttf/otf/woff) — a diferencia del
+// resto del sitio, que sí puede usar los .woff2 de Altiplano vía next/font/local.
+// Estos .ttf son una conversión local (fonttools) de los mismos archivos
+// variables, solo para este generador de imagen.
 export default async function OpengraphImage() {
-  const [dmSerif, dmSansRegular, dmSansMedium] = await Promise.all([
-    readFile(join(process.cwd(), "src/fonts/DMSerifDisplay-Regular.ttf")),
-    readFile(join(process.cwd(), "src/fonts/DMSans-Regular.ttf")),
-    readFile(join(process.cwd(), "src/fonts/DMSans-Medium.ttf")),
+  const [bodoniModa, spaceGroteskRegular, spaceGroteskMedium] = await Promise.all([
+    readFile(join(process.cwd(), "src/fonts/BodoniModa-400.ttf")),
+    readFile(join(process.cwd(), "src/fonts/SpaceGrotesk-400.ttf")),
+    readFile(join(process.cwd(), "src/fonts/SpaceGrotesk-500.ttf")),
   ]);
 
   return new ImageResponse(
@@ -23,23 +27,23 @@ export default async function OpengraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#F4F0E6",
-          fontFamily: "DM Sans",
+          background: "#E8E3D6",
+          fontFamily: "Space Grotesk",
         }}
       >
         <svg width="88" height="88" viewBox="1 11 176 176" style={{ marginBottom: 28 }}>
-          <path d="M 100 20 A 80 80 0 1 1 20.4 58" fill="none" stroke="#1A3A7A" strokeWidth="16" strokeLinecap="round" />
-          <path d="M 20.4 58 A 80 80 0 0 1 100 20" fill="none" stroke="#C9952A" strokeWidth="16" strokeLinecap="round" />
-          <line x1="100" y1="100" x2="150" y2="100" stroke="#1A3A7A" strokeWidth="14" strokeLinecap="round" />
-          <line x1="150" y1="100" x2="150" y2="126" stroke="#1A3A7A" strokeWidth="14" strokeLinecap="round" />
-          <circle cx="100" cy="100" r="16" fill="#C9952A" />
-          <circle cx="150" cy="100" r="9" fill="#C9952A" />
+          <path d="M 100 20 A 80 80 0 1 1 20.4 58" fill="none" stroke="#0A1416" strokeWidth="16" strokeLinecap="round" />
+          <path d="M 20.4 58 A 80 80 0 0 1 100 20" fill="none" stroke="#8F5022" strokeWidth="16" strokeLinecap="round" />
+          <line x1="100" y1="100" x2="150" y2="100" stroke="#0A1416" strokeWidth="14" strokeLinecap="round" />
+          <line x1="150" y1="100" x2="150" y2="126" stroke="#0A1416" strokeWidth="14" strokeLinecap="round" />
+          <circle cx="100" cy="100" r="16" fill="#8F5022" />
+          <circle cx="150" cy="100" r="9" fill="#8F5022" />
         </svg>
         <div
           style={{
-            fontFamily: "DM Serif Display",
+            fontFamily: "Bodoni Moda",
             fontSize: 72,
-            color: "#0F1F4A",
+            color: "#0A1416",
             letterSpacing: "-0.01em",
           }}
         >
@@ -49,7 +53,8 @@ export default async function OpengraphImage() {
           style={{
             marginTop: 20,
             fontSize: 30,
-            color: "#3A4866",
+            color: "#0A1416",
+            opacity: 0.7,
           }}
         >
           La arquitectura de la confianza.
@@ -61,15 +66,15 @@ export default async function OpengraphImage() {
             gap: 14,
             fontSize: 18,
             fontWeight: 500,
-            color: "#9C7A3A",
+            color: "#8F5022",
             textTransform: "uppercase",
             letterSpacing: "0.12em",
           }}
         >
           <span>DataGovOps</span>
-          <span style={{ color: "#C9952A" }}>·</span>
+          <span style={{ color: "#CE7B45" }}>·</span>
           <span>CDO Fraccional</span>
-          <span style={{ color: "#C9952A" }}>·</span>
+          <span style={{ color: "#CE7B45" }}>·</span>
           <span>Trust Architecture</span>
         </div>
       </div>
@@ -77,9 +82,9 @@ export default async function OpengraphImage() {
     {
       ...size,
       fonts: [
-        { name: "DM Serif Display", data: dmSerif, weight: 400, style: "normal" },
-        { name: "DM Sans", data: dmSansRegular, weight: 400, style: "normal" },
-        { name: "DM Sans", data: dmSansMedium, weight: 500, style: "normal" },
+        { name: "Bodoni Moda", data: bodoniModa, weight: 400, style: "normal" },
+        { name: "Space Grotesk", data: spaceGroteskRegular, weight: 400, style: "normal" },
+        { name: "Space Grotesk", data: spaceGroteskMedium, weight: 500, style: "normal" },
       ],
     }
   );

@@ -22,16 +22,16 @@ export default function PrivacidadPage() {
   return (
     <>
       <SiteHeader />
-      <main className="flex-1 bg-[#fdfcf9]">
+      <main className="flex-1 bg-[#f5f2ea]">
         <div className="mx-auto max-w-2xl px-6 py-16">
-          <h1 className="font-serif text-3xl text-[#0f1f4a] sm:text-4xl">
+          <h1 className="font-serif text-3xl text-[#0a1416] sm:text-4xl">
             Política de Privacidad de Govia Partners
           </h1>
-          <p className="mt-2 text-sm text-[#3a4866]">
+          <p className="mt-2 text-sm text-[#0a1416]">
             Última actualización: 13 de agosto de 2026
           </p>
 
-          <p className="mt-8 text-base leading-relaxed text-[#3a4866]">
+          <p className="mt-8 text-base leading-relaxed text-[#0a1416]">
             En Govia Partners (&ldquo;Govia Partners&rdquo;, &ldquo;nosotros&rdquo;) respetamos tu
             privacidad y tratamos tus datos personales conforme a la Ley N.º
             29733, Ley de Protección de Datos Personales, y su Reglamento
@@ -51,7 +51,7 @@ export default function PrivacidadPage() {
               <strong>Domicilio legal:</strong> Chincha, Ica, Perú
               <br />
               <strong>Contacto para temas de privacidad:</strong>{" "}
-              <a href="mailto:privacidad@goviapartners.com" className="underline hover:text-[#0f1f4a]">
+              <a href="mailto:privacidad@goviapartners.com" className="underline hover:text-[#0a1416]">
                 privacidad@goviapartners.com
               </a>
             </p>
@@ -125,7 +125,7 @@ export default function PrivacidadPage() {
               Ninguna de las dos casillas viene pre-marcada. Puedes{" "}
               <strong>revocar tu consentimiento en cualquier momento</strong>,
               sin necesidad de justificar el motivo, escribiendo a{" "}
-              <a href="mailto:privacidad@goviapartners.com" className="underline hover:text-[#0f1f4a]">
+              <a href="mailto:privacidad@goviapartners.com" className="underline hover:text-[#0a1416]">
                 privacidad@goviapartners.com
               </a>
               . La revocación no afecta la licitud del tratamiento realizado
@@ -155,19 +155,19 @@ export default function PrivacidadPage() {
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-sm">
                 <thead>
-                  <tr className="border-b border-[#ece6d6] text-left">
-                    <th className="py-2 pr-4 font-semibold text-[#0f1f4a]">Proveedor</th>
-                    <th className="py-2 pr-4 font-semibold text-[#0f1f4a]">Función</th>
-                    <th className="py-2 font-semibold text-[#0f1f4a]">Ubicación</th>
+                  <tr className="border-b border-[#dad4c4] text-left">
+                    <th className="py-2 pr-4 font-semibold text-[#0a1416]">Proveedor</th>
+                    <th className="py-2 pr-4 font-semibold text-[#0a1416]">Función</th>
+                    <th className="py-2 font-semibold text-[#0a1416]">Ubicación</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-[#ece6d6]">
+                  <tr className="border-b border-[#dad4c4]">
                     <td className="py-2 pr-4">Neon</td>
                     <td className="py-2 pr-4">Almacenamiento de la base de datos de leads</td>
                     <td className="py-2">Estados Unidos</td>
                   </tr>
-                  <tr className="border-b border-[#ece6d6]">
+                  <tr className="border-b border-[#dad4c4]">
                     <td className="py-2 pr-4">Vercel</td>
                     <td className="py-2 pr-4">Hosting y funciones del sitio web</td>
                     <td className="py-2">Estados Unidos</td>
@@ -181,7 +181,7 @@ export default function PrivacidadPage() {
               </table>
             </div>
 
-            <h3 className="font-serif text-lg text-[#0f1f4a]">
+            <h3 className="font-serif text-lg text-[#0a1416]">
               Flujo transfronterizo de datos personales
             </h3>
             <p>
@@ -245,7 +245,7 @@ export default function PrivacidadPage() {
             </ul>
             <p>
               <strong>¿Cómo ejercer estos derechos?</strong> Escríbenos a{" "}
-              <a href="mailto:privacidad@goviapartners.com" className="underline hover:text-[#0f1f4a]">
+              <a href="mailto:privacidad@goviapartners.com" className="underline hover:text-[#0a1416]">
                 privacidad@goviapartners.com
               </a>{" "}
               indicando tu nombre, el derecho que deseas ejercer y el correo
@@ -305,7 +305,7 @@ export default function PrivacidadPage() {
               <strong>Govia Partners</strong>
               <br />
               Correo:{" "}
-              <a href="mailto:privacidad@goviapartners.com" className="underline hover:text-[#0f1f4a]">
+              <a href="mailto:privacidad@goviapartners.com" className="underline hover:text-[#0a1416]">
                 privacidad@goviapartners.com
               </a>
             </p>
@@ -317,7 +317,7 @@ export default function PrivacidadPage() {
             </p>
           </Section>
 
-          <p className="mt-12 text-xs text-[#9c7a3a]">
+          <p className="mt-12 text-xs text-[#8f5022]">
             Versión de esta política: {POLITICA_PRIVACIDAD_VERSION}
           </p>
         </div>
@@ -330,8 +330,8 @@ export default function PrivacidadPage() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="mt-10">
-      <h2 className="font-serif text-2xl text-[#0f1f4a]">{title}</h2>
-      <div className="mt-3 space-y-4 text-base leading-relaxed text-[#3a4866]">
+      <h2 className="font-serif text-2xl text-[#0a1416]">{title}</h2>
+      <div className="mt-3 space-y-4 text-base leading-relaxed text-[#0a1416]">
         {children}
       </div>
     </section>

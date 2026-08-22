@@ -29,16 +29,16 @@ export default function BlogIndexPage() {
   return (
     <>
       <SiteHeader />
-      <main className="flex-1 bg-[#f4f0e6]">
+      <main className="flex-1 bg-[#e8e3d6]">
         <div className="mx-auto max-w-5xl px-6 py-20">
-          <p className="font-mono text-xs uppercase tracking-widest text-[#0e8478]">Blog</p>
-          <h1 className="mt-3 font-serif text-4xl leading-tight text-[#0f1f4a]">
+          <p className="font-mono text-xs uppercase tracking-widest text-[#8f5022]">Blog</p>
+          <h1 className="mt-3 font-serif text-4xl leading-tight text-[#0a1416]">
             Ideas sobre gobierno de datos y confianza
           </h1>
 
           {posts.length === 0 ? (
-            <div className="mt-12 rounded-sm border border-[#ece6d6] bg-[#fdfcf9] px-6 py-16 text-center">
-              <p className="text-base text-[#3a4866]">
+            <div className="mt-12 rounded-sm border border-[#dad4c4] bg-[#f5f2ea] px-6 py-16 text-center">
+              <p className="text-base text-[#0a1416]/70">
                 Todavía no hay artículos publicados. Vuelve pronto.
               </p>
             </div>
@@ -48,13 +48,13 @@ export default function BlogIndexPage() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="block rounded-sm border border-[#ece6d6] bg-[#fdfcf9] p-6 transition-colors hover:border-[#c9952a]"
+                  className="block rounded-sm border border-[#dad4c4] bg-white p-6 transition-colors hover:border-[#ce7b45]"
                 >
-                  <p className="font-mono text-xs uppercase tracking-widest text-[#0e8478]">
+                  <p className="font-mono text-xs uppercase tracking-widest text-[#8f5022]">
                     {formatDate(post.date)}
                   </p>
-                  <h2 className="mt-2 font-serif text-xl text-[#0f1f4a]">{post.title}</h2>
-                  <p className="mt-2 text-sm leading-relaxed text-[#3a4866]">
+                  <h2 className="mt-2 font-serif text-xl text-[#0a1416]">{post.title}</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-[#0a1416]/70">
                     {post.description}
                   </p>
                 </Link>

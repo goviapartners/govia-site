@@ -51,16 +51,16 @@ export default async function BlogPostPage({
   return (
     <>
       <SiteHeader />
-      <main className="flex-1 bg-[#f4f0e6]">
+      <main className="flex-1 bg-[#e8e3d6]">
         <article className="mx-auto max-w-2xl px-6 py-20">
-          <p className="font-mono text-xs uppercase tracking-widest text-[#0e8478]">
+          <p className="font-mono text-xs uppercase tracking-widest text-[#8f5022]">
             {formatDate(post.date)}
           </p>
-          <h1 className="mt-3 font-serif text-3xl leading-tight text-[#0f1f4a] sm:text-4xl">
+          <h1 className="mt-3 font-serif text-3xl leading-tight text-[#0a1416] sm:text-4xl">
             {post.title}
           </h1>
           <div
-            className="prose-govia mt-8 text-base leading-relaxed text-[#3a4866]"
+            className="prose-govia mt-8 text-base leading-relaxed text-[#0a1416]/70"
             dangerouslySetInnerHTML={{ __html: post.contentHtml }}
           />
         </article>
