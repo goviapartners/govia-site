@@ -36,7 +36,7 @@ export async function sendWhitepaperEmail(params: {
   const cuerpo = downloadUrl
     ? `<p>Hola ${nombre},</p>
        <p>Gracias por tu interés en <strong>Git para DataGovOps</strong>. Aquí tienes tu copia:</p>
-       <p><a href="${downloadUrl}" style="display:inline-block;background:#c9952a;color:#0f1f4a;padding:12px 24px;text-decoration:none;font-weight:600;border-radius:2px;">Descargar el whitepaper</a></p>
+       <p><a href="${downloadUrl}" style="display:inline-block;background:#8f5022;color:#f5f2ea;padding:12px 24px;text-decoration:none;font-weight:600;border-radius:2px;">Descargar el whitepaper</a></p>
        <p>— Govia Partners</p>`
     : `<p>Hola ${nombre},</p>
        <p>Gracias por tu interés en <strong>Git para DataGovOps</strong>. Estamos terminando de preparar el PDF — te lo hacemos llegar apenas esté listo.</p>
@@ -99,46 +99,46 @@ export async function sendTMSResultEmail(params: {
   const cuerpo = `<!DOCTYPE html>
 <html lang="es">
 <head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Tu Trust Maturity Score</title></head>
-<body style="margin:0;padding:0;background:#f4f0e6;font-family:system-ui,-apple-system,sans-serif;color:#0f1f4a;">
+<body style="margin:0;padding:0;background:#e8e3d6;font-family:system-ui,-apple-system,sans-serif;color:#0a1416;">
   <div style="max-width:520px;margin:0 auto;padding:32px 24px;">
     <div style="text-align:center;margin-bottom:32px;">
-      <span style="font-size:13px;color:#3a4866;letter-spacing:0.08em;text-transform:uppercase;">Govia Partners</span>
+      <span style="font-size:13px;color:#0a1416;letter-spacing:0.08em;text-transform:uppercase;">Govia Partners</span>
     </div>
-    <div style="background:#fdfcf9;border:1px solid #ece6d6;border-radius:8px;padding:32px 24px;text-align:center;margin-bottom:20px;">
-      <p style="margin:0 0 8px;font-size:12px;color:#3a4866;text-transform:uppercase;letter-spacing:0.06em;">Trust Maturity Score</p>
+    <div style="background:#f5f2ea;border:1px solid #dad4c4;border-radius:8px;padding:32px 24px;text-align:center;margin-bottom:20px;">
+      <p style="margin:0 0 8px;font-size:12px;color:#0a1416;text-transform:uppercase;letter-spacing:0.06em;">Trust Maturity Score</p>
       <p style="margin:0;font-size:64px;font-weight:900;line-height:1;color:${color};">${scores.tms}</p>
       <p style="margin:12px 0 0;font-size:13px;color:${color};font-weight:600;">Nivel ${scores.maturity_level} — ${maturityLabel}</p>
     </div>
     <p style="font-size:15px;line-height:1.6;margin:0 0 24px;">Hola <strong>${nombre}</strong>, aquí están los resultados de tu diagnóstico de madurez de datos.</p>
-    <div style="background:#fdfcf9;border:1px solid #ece6d6;border-radius:8px;padding:24px;margin-bottom:20px;">
-      <p style="margin:0 0 16px;font-size:12px;color:#3a4866;text-transform:uppercase;letter-spacing:0.06em;">Scores por pilar</p>
+    <div style="background:#f5f2ea;border:1px solid #dad4c4;border-radius:8px;padding:24px;margin-bottom:20px;">
+      <p style="margin:0 0 16px;font-size:12px;color:#0a1416;text-transform:uppercase;letter-spacing:0.06em;">Scores por pilar</p>
       ${pilarRows
         .map(
           (p) => `
       <div style="margin-bottom:12px;">
         <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
-          <span style="font-size:13px;color:#3a4866;">${p.label}</span>
-          <span style="font-size:13px;font-weight:700;color:#0f1f4a;">${p.norm}</span>
+          <span style="font-size:13px;color:#0a1416;">${p.label}</span>
+          <span style="font-size:13px;font-weight:700;color:#0a1416;">${p.norm}</span>
         </div>
-        <div style="height:6px;background:#ece6d6;border-radius:3px;overflow:hidden;">
+        <div style="height:6px;background:#dad4c4;border-radius:3px;overflow:hidden;">
           <div style="height:100%;width:${p.norm}%;background:${getTMSColor(p.norm)};border-radius:3px;"></div>
         </div>
       </div>`
         )
         .join("")}
     </div>
-    <div style="background:#fdfcf9;border:1px solid #c9952a;border-radius:8px;padding:20px;margin-bottom:20px;">
-      <p style="margin:0 0 8px;font-size:12px;color:#9c7a3a;text-transform:uppercase;letter-spacing:0.06em;">Tu perfil de brecha</p>
-      <p style="margin:0;font-size:14px;font-weight:500;color:#0f1f4a;line-height:1.5;">${gapProfile}</p>
+    <div style="background:#f5f2ea;border:1px solid #8f5022;border-radius:8px;padding:20px;margin-bottom:20px;">
+      <p style="margin:0 0 8px;font-size:12px;color:#8f5022;text-transform:uppercase;letter-spacing:0.06em;">Tu perfil de brecha</p>
+      <p style="margin:0;font-size:14px;font-weight:500;color:#0a1416;line-height:1.5;">${gapProfile}</p>
     </div>
-    <div style="background:#ece6d6;border:1px solid #c9952a;border-radius:8px;padding:24px;text-align:center;margin-bottom:32px;">
-      <p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#0f1f4a;">¿Quieres un plan de mejora detallado?</p>
-      <p style="margin:0 0 20px;font-size:13px;color:#3a4866;line-height:1.5;">Solicita una Trust Cartography gratuita de 30 minutos.<br/>Revisamos tu TMS y definimos los 3 próximos pasos concretos.</p>
-      <a href="${calendlyUrl}" style="display:inline-block;background:#c9952a;color:#0f1f4a;font-weight:700;font-size:14px;padding:12px 28px;border-radius:4px;text-decoration:none;">Solicitar Trust Cartography</a>
+    <div style="background:#dad4c4;border:1px solid #8f5022;border-radius:8px;padding:24px;text-align:center;margin-bottom:32px;">
+      <p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#0a1416;">¿Quieres un plan de mejora detallado?</p>
+      <p style="margin:0 0 20px;font-size:13px;color:#0a1416;line-height:1.5;">Solicita una Trust Cartography gratuita de 30 minutos.<br/>Revisamos tu TMS y definimos los 3 próximos pasos concretos.</p>
+      <a href="${calendlyUrl}" style="display:inline-block;background:#8f5022;color:#f5f2ea;font-weight:700;font-size:14px;padding:12px 28px;border-radius:4px;text-decoration:none;">Solicitar Trust Cartography</a>
     </div>
-    <div style="text-align:center;border-top:1px solid #ece6d6;padding-top:20px;">
-      <p style="margin:0 0 4px;font-size:12px;color:#3a4866;">Govia Partners — DataGovOps</p>
-      <p style="margin:0;font-size:11px;color:#3a4866;">Este diagnóstico fue completado por ti y tus datos se tratan según nuestra <a href="https://goviapartners.com/privacidad" style="color:#3a4866;">Política de Privacidad</a>.</p>
+    <div style="text-align:center;border-top:1px solid #dad4c4;padding-top:20px;">
+      <p style="margin:0 0 4px;font-size:12px;color:#0a1416;">Govia Partners — DataGovOps</p>
+      <p style="margin:0;font-size:11px;color:#0a1416;">Este diagnóstico fue completado por ti y tus datos se tratan según nuestra <a href="https://goviapartners.com/privacidad" style="color:#0a1416;">Política de Privacidad</a>.</p>
     </div>
   </div>
 </body>
