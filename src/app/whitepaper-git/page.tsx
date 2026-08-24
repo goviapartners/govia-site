@@ -22,13 +22,13 @@ export const metadata: Metadata = {
  * cerrados (spec §5, §7 — ruta crítica).
  */
 const IDEAS = [
-  "Por qué un dataset sin historial de cambios es tan riesgoso como código sin control de versiones.",
-  "El equivalente de un \"commit\" para una regla de calidad de datos.",
-  "Cómo un \"diff\" de esquema previene incidentes de gobernanza antes de producción.",
-  "Branching como patrón para probar cambios de gobierno sin romper el dato en producción.",
-  "Qué significa \"blame\" aplicado a un Critical Data Element mal gobernado.",
-  "El caso de negocio para tratar las políticas de datos como código versionado.",
-  "Cómo Govia aplica este patrón dentro de Odysseus, su propia plataforma de gobierno.",
+  "Por qué un glosario o un reporte sin historial de cambios es tan indefendible ante una auditoría como un número que nadie puede explicar.",
+  "Qué es \"gobernar como código\" sin jerga — y por qué no exige que Compliance aprenda a programar.",
+  "Cómo el historial de una definición de negocio reconstruye el linaje de una decisión, no solo el de una tabla.",
+  "La diferencia entre una regla de calidad que se ejecuta y deja evidencia, y una que solo vive en un PDF.",
+  "Cómo un registro verificable de aprobaciones se vuelve evidencia de cumplimiento lista para exportar — sin reconstruirla la semana antes del auditor.",
+  "Qué rastro necesita el gobierno de IA para responder \"¿qué reglas gobernaban el modelo el día que tomó esa decisión?\".",
+  "Y lo que ninguna herramienta resuelve: el versionado hace visible la accountability, pero no la crea.",
 ];
 
 const isLandingLive = process.env.NEXT_PUBLIC_LANDING_LIVE === "true";
@@ -82,12 +82,18 @@ function LandingLive() {
               Git para DataGovOps
             </h1>
             <p className="mt-4 text-base leading-relaxed text-[#0a1416]/70">
-              Control de versiones no es solo para código. Aplica los mismos
-              principios que hicieron a Git indispensable en ingeniería de
-              software a tu gobierno de datos — y deja de tratar tus políticas
-              como documentos que nadie versiona ni audita.
+              Las políticas que definen tus datos críticos —qué cuenta como
+              “cliente activo”, “ingreso reconocido” o “incidente
+              reportable”— suelen vivir en un Word sin historial, sin fecha
+              de aprobación y sin registro de quién dijo que sí. Este
+              whitepaper muestra cómo darles la misma trazabilidad que la
+              ingeniería exige a su código. Sin escribir una sola línea de
+              código.
             </p>
-            <ul className="mt-8 space-y-3">
+            <p className="mt-6 text-sm font-semibold text-[#0a1416]">
+              Siete ideas, en lenguaje de negocio:
+            </p>
+            <ul className="mt-4 space-y-3">
               {IDEAS.map((idea) => (
                 <li
                   key={idea}
