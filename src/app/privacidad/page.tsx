@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ContourLinesCaliza } from "@/components/contour-lines";
 import { POLITICA_PRIVACIDAD_VERSION } from "@/lib/legal";
 
 const title = "Política de Privacidad | Govia Partners";
@@ -22,8 +23,9 @@ export default function PrivacidadPage() {
   return (
     <>
       <SiteHeader />
-      <main className="flex-1 bg-[#f5f2ea]">
-        <div className="mx-auto max-w-2xl px-6 py-16">
+      <main className="relative flex-1 overflow-hidden bg-[#f5f2ea]">
+        <ContourLinesCaliza className="absolute inset-x-0 top-0 h-24 w-full" />
+        <div className="relative mx-auto max-w-2xl px-6 py-16">
           <h1 className="font-serif text-3xl text-[#0a1416] sm:text-4xl">
             Política de Privacidad de Govia Partners
           </h1>

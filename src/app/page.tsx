@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ContourLinesProfundo } from "@/components/contour-lines";
 
 /*
  * DRAFT — copy placeholder pendiente de revisión por @growth-hacker.
@@ -32,26 +33,33 @@ export default function HomePage() {
     <>
       <SiteHeader />
       <main className="flex-1">
-        {/* Hero */}
-        <section className="bg-[#e8e3d6]">
-          <div className="mx-auto max-w-3xl px-6 py-24 text-center">
-            <h1 className="font-serif text-4xl leading-tight text-[#0a1416] sm:text-5xl">
+        {/* Hero — Modo Profundo: la landing es el único registro del sitio
+            donde la marca abre en Altiplano a máxima presencia (Altiplano -
+            Sistema de Modos §10, tabla de decisión: "Landing ·
+            goviapartners.com → Profundo — persuade en tres segundos, la
+            textura es el argumento"). El resto de la página vuelve a Caliza:
+            es contenido de lectura, no la apertura. */}
+        <section className="relative isolate overflow-hidden bg-[#081619]">
+          <div className="absolute inset-y-0 left-0 w-1 bg-[#ce7b45]" />
+          <ContourLinesProfundo className="absolute inset-0 h-full w-full" />
+          <div className="relative mx-auto max-w-3xl px-6 py-24 text-center">
+            <h1 className="font-serif text-4xl leading-tight text-[#e8e3d6] sm:text-5xl">
               La arquitectura de la confianza.
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-lg text-[#0a1416]/70">
+            <p className="mx-auto mt-6 max-w-xl text-lg text-[#93a5a3]">
               Convertimos deuda de datos en activos estratégicos que habilitan
               IA confiable — sin alucinaciones ni riesgos legales.
             </p>
             <div className="mt-10 flex justify-center gap-4">
               <Link
                 href="/whitepaper-git"
-                className="rounded-sm bg-[#8f5022] px-6 py-3 font-semibold text-[#f5f2ea] transition-colors hover:bg-[#ce7b45]"
+                className="rounded-sm bg-[#ce7b45] px-6 py-3 font-semibold text-[#081619] transition-colors hover:bg-[#e09a63]"
               >
                 Leer el whitepaper
               </Link>
               <Link
                 href="#contacto"
-                className="rounded-sm border border-[#0a1416] px-6 py-3 font-semibold text-[#0a1416] transition-colors hover:bg-[#0a1416] hover:text-[#e8e3d6]"
+                className="rounded-sm border border-[#93a5a3] px-6 py-3 font-semibold text-[#e8e3d6] transition-colors hover:bg-[#e8e3d6] hover:text-[#081619]"
               >
                 Conversemos
               </Link>
