@@ -125,7 +125,7 @@ export default function HomePage() {
                 nuestros servicios de gobierno de datos.
               </p>
               <a
-                href={process.env.NEXT_PUBLIC_FLOWPREP_URL ?? "https://flowprep-data.vercel.app"}
+                href={process.env.NEXT_PUBLIC_FLOWPREP_URL ?? "https://flowprepdata.com"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-block rounded-sm border border-[#0a1416] px-6 py-2.5 text-sm font-semibold text-[#0a1416] transition-colors hover:bg-[#0a1416] hover:text-[#e8e3d6]"
