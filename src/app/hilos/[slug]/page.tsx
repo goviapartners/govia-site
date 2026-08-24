@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ContourLinesCaliza } from "@/components/contour-lines";
 import { getAllHilos, getHiloBySlug } from "@/lib/hilos";
 
 export function generateStaticParams() {
@@ -51,8 +52,9 @@ export default async function HiloPage({
   return (
     <>
       <SiteHeader />
-      <main className="flex-1 bg-[#e8e3d6]">
-        <article className="mx-auto max-w-2xl px-6 py-20">
+      <main className="relative flex-1 overflow-hidden bg-[#e8e3d6]">
+        <ContourLinesCaliza className="absolute inset-x-0 top-0 h-24 w-full" />
+        <article className="relative mx-auto max-w-2xl px-6 py-20">
           <p className="font-mono text-xs uppercase tracking-widest text-[#8f5022]">
             Hilo · Actualizado {formatDate(hilo.date)}
           </p>

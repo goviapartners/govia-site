@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ContourLinesCaliza } from "@/components/contour-lines";
 import { LeadForm } from "./lead-form";
 
 const title = "Git para DataGovOps — Whitepaper | Govia Partners";
@@ -46,8 +47,9 @@ export default function WhitepaperGitPage() {
 
 function ComingSoon() {
   return (
-    <section className="bg-[#e8e3d6]">
-      <div className="mx-auto max-w-2xl px-6 py-28 text-center">
+    <section className="relative overflow-hidden bg-[#e8e3d6]">
+      <ContourLinesCaliza className="absolute inset-x-0 top-0 h-24 w-full" />
+      <div className="relative mx-auto max-w-2xl px-6 py-28 text-center">
         <h1 className="font-serif text-3xl text-[#0a1416] sm:text-4xl">
           "Git para DataGovOps" — próximamente
         </h1>
@@ -69,8 +71,9 @@ function ComingSoon() {
 function LandingLive() {
   return (
     <>
-      <section className="bg-[#e8e3d6]">
-        <div className="mx-auto grid max-w-5xl gap-12 px-6 py-20 sm:grid-cols-2 sm:items-center">
+      <section className="relative overflow-hidden bg-[#e8e3d6]">
+        <ContourLinesCaliza className="absolute inset-x-0 top-0 h-24 w-full" />
+        <div className="relative mx-auto grid max-w-5xl gap-12 px-6 py-20 sm:grid-cols-2 sm:items-center">
           <div>
             <p className="font-mono text-xs uppercase tracking-widest text-[#8f5022]">
               Whitepaper gratuito

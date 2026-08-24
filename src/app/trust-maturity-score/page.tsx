@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ContourLinesCaliza } from "@/components/contour-lines";
 import TMSAssessmentForm from "@/components/tms-assessment-form";
 
 const title = "Trust Maturity Score — Diagnóstico gratuito de madurez de datos | Govia Partners";
@@ -28,8 +29,9 @@ export default function TrustMaturityScorePage() {
 
 function ComingSoon() {
   return (
-    <section className="bg-[#e8e3d6]">
-      <div className="mx-auto max-w-2xl px-6 py-28 text-center">
+    <section className="relative overflow-hidden bg-[#e8e3d6]">
+      <ContourLinesCaliza className="absolute inset-x-0 top-0 h-24 w-full" />
+      <div className="relative mx-auto max-w-2xl px-6 py-28 text-center">
         <h1 className="font-serif text-3xl text-[#0a1416] sm:text-4xl">
           Trust Maturity Score — próximamente
         </h1>

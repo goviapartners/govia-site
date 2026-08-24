@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ContourLinesCaliza } from "@/components/contour-lines";
 
 const title = "Trust Architecture Framework (TAF) | Govia Partners";
 const description =
@@ -94,8 +95,9 @@ export default function TafPage() {
       <SiteHeader />
       <main className="flex-1">
         {/* Hero */}
-        <section className="bg-[#e8e3d6]">
-          <div className="mx-auto max-w-3xl px-6 py-24 text-center">
+        <section className="relative overflow-hidden bg-[#e8e3d6]">
+          <ContourLinesCaliza className="absolute inset-x-0 top-0 h-24 w-full" />
+          <div className="relative mx-auto max-w-3xl px-6 py-24 text-center">
             <p className="font-mono text-xs uppercase tracking-widest text-[#8f5022]">
               Metodología propietaria de Govia Partners
             </p>

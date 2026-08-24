@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/cn";
+import { ContourLinesCaliza } from "./contour-lines";
 import TMSRadarChart from "./tms-radar-chart";
 import { TMS_QUESTIONS_BY_PILAR, TMS_QUESTIONS, LIKERT_LABELS, getTMSColor } from "@/lib/tms-data";
 import { submitTMSAssessment, type SubmitTMSResult } from "@/app/trust-maturity-score/actions";
@@ -129,8 +130,9 @@ export default function TMSAssessmentForm() {
   };
 
   return (
-    <div className="bg-[#e8e3d6]">
-      <div className="mx-auto max-w-2xl px-6 py-16">
+    <div className="relative overflow-hidden bg-[#e8e3d6]">
+      <ContourLinesCaliza className="absolute inset-x-0 top-0 h-24 w-full" />
+      <div className="relative mx-auto max-w-2xl px-6 py-16">
         <AnimatePresence mode="wait">
           {/* ── PASO: REGISTRO ─────────────────────────────────────────── */}
           {step === "register" && (
