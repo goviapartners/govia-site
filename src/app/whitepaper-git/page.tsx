@@ -29,6 +29,7 @@ const IDEAS = [
   "Cómo un registro verificable de aprobaciones se vuelve evidencia de cumplimiento lista para exportar — sin reconstruirla la semana antes del auditor.",
   "Qué rastro necesita el gobierno de IA para responder \"¿qué reglas gobernaban el modelo el día que tomó esa decisión?\".",
   "Y lo que ninguna herramienta resuelve: el versionado hace visible la accountability, pero no la crea.",
+  "Cómo aplicamos este patrón en la práctica, con ejemplos de una plataforma de gobierno real.",
 ];
 
 const isLandingLive = process.env.NEXT_PUBLIC_LANDING_LIVE === "true";
@@ -91,7 +92,7 @@ function LandingLive() {
               código.
             </p>
             <p className="mt-6 text-sm font-semibold text-[#0a1416]">
-              Siete ideas, en lenguaje de negocio:
+              Ocho ideas, en lenguaje de negocio:
             </p>
             <ul className="mt-4 space-y-3">
               {IDEAS.map((idea) => (
