@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -50,15 +51,26 @@ export default function BlogIndexPage() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="block rounded-sm border border-[#dad4c4] bg-white p-6 transition-colors hover:border-[#ce7b45]"
+                  className="block overflow-hidden rounded-sm border border-[#dad4c4] bg-white transition-colors hover:border-[#ce7b45]"
                 >
-                  <p className="font-mono text-xs uppercase tracking-widest text-[#8f5022]">
-                    {formatDate(post.date)}
-                  </p>
-                  <h2 className="mt-2 font-serif text-xl text-[#0a1416]">{post.title}</h2>
-                  <p className="mt-2 text-sm leading-relaxed text-[#0a1416]/70">
-                    {post.description}
-                  </p>
+                  {post.image ? (
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      width={1600}
+                      height={900}
+                      className="h-auto w-full border-b border-[#dad4c4]"
+                    />
+                  ) : null}
+                  <div className="p-6">
+                    <p className="font-mono text-xs uppercase tracking-widest text-[#8f5022]">
+                      {formatDate(post.date)}
+                    </p>
+                    <h2 className="mt-2 font-serif text-xl text-[#0a1416]">{post.title}</h2>
+                    <p className="mt-2 text-sm leading-relaxed text-[#0a1416]/70">
+                      {post.description}
+                    </p>
+                  </div>
                 </Link>
               ))}
             </div>

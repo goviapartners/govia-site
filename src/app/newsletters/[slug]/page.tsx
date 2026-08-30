@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
@@ -80,12 +81,23 @@ export default async function NewsletterPage({
                 <li key={edition.slug}>
                   <Link
                     href={`/blog/${edition.slug}`}
-                    className="block rounded-sm border border-[#dad4c4] bg-white p-4 transition-colors hover:border-[#ce7b45]"
+                    className="flex items-center gap-4 rounded-sm border border-[#dad4c4] bg-white p-4 transition-colors hover:border-[#ce7b45]"
                   >
-                    <p className="font-mono text-xs uppercase tracking-widest text-[#8f5022]">
-                      {formatDate(edition.date)}
-                    </p>
-                    <p className="mt-1 font-serif text-lg text-[#0a1416]">{edition.title}</p>
+                    {edition.image ? (
+                      <Image
+                        src={edition.image}
+                        alt={edition.title}
+                        width={160}
+                        height={90}
+                        className="h-auto w-28 shrink-0 rounded-sm border border-[#dad4c4]"
+                      />
+                    ) : null}
+                    <div>
+                      <p className="font-mono text-xs uppercase tracking-widest text-[#8f5022]">
+                        {formatDate(edition.date)}
+                      </p>
+                      <p className="mt-1 font-serif text-lg text-[#0a1416]">{edition.title}</p>
+                    </div>
                   </Link>
                 </li>
               ))}

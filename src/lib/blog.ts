@@ -12,6 +12,9 @@ export type BlogPostMeta = {
   date: string;
   newsletter?: string;
   edicion?: number;
+  // Portada — ruta root-relative a un archivo en public/ (ej. "/blog-covers/[slug].png").
+  // Opcional: un artículo sin portada sigue renderizando sin imagen, sin romper nada.
+  image?: string;
 };
 
 export type BlogPost = BlogPostMeta & {
@@ -38,6 +41,7 @@ export function getAllPosts(): BlogPostMeta[] {
         date: data.date as string,
         newsletter: data.newsletter as string | undefined,
         edicion: data.edicion as number | undefined,
+        image: data.image as string | undefined,
       };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -59,6 +63,9 @@ export function getPostBySlug(slug: string): BlogPost | null {
     title: data.title as string,
     description: data.description as string,
     date: data.date as string,
+    newsletter: data.newsletter as string | undefined,
+    edicion: data.edicion as number | undefined,
+    image: data.image as string | undefined,
     contentHtml: marked.parse(content, { async: false }) as string,
   };
 }
