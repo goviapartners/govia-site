@@ -2,6 +2,7 @@
 title: "Episodio 1 – El mito de que Bronce es la capa sucia"
 description: "Por qué decidir qué filtrar en la ingesta es el verdadero riesgo de gobierno de datos, no guardar el dato crudo de más."
 date: "2026-08-30"
+image: "/blog-covers/mito-capa-bronce.png"
 newsletter: governance-chill
 edicion: 1
 ---
