@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContourLinesCaliza } from "@/components/contour-lines";
-import { getAllPosts } from "@/lib/blog";
+import { getBlogIndexPosts } from "@/lib/blog";
 
 const title = "Blog | Govia Partners";
 const description =
@@ -26,7 +26,7 @@ function formatDate(date: string) {
 }
 
 export default function BlogIndexPage() {
-  const posts = getAllPosts();
+  const posts = getBlogIndexPosts();
 
   return (
     <>
