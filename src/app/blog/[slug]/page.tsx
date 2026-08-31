@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContourLinesCaliza } from "@/components/contour-lines";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { getNewsletterBySlug } from "@/lib/newsletters";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -51,12 +53,24 @@ export default async function BlogPostPage({
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const newsletter = post.newsletter ? getNewsletterBySlug(post.newsletter) : null;
+
   return (
     <>
       <SiteHeader />
       <main className="relative flex-1 overflow-hidden bg-[#e8e3d6]">
         <ContourLinesCaliza className="absolute inset-x-0 top-0 h-24 w-full" />
         <article className="relative mx-auto max-w-2xl px-6 py-20">
+          {newsletter ? (
+            <Link
+              href={`/newsletters/${newsletter.slug}`}
+              className="mb-6 inline-flex items-center gap-2 rounded-sm border border-[#dad4c4] bg-white px-3 py-1.5 text-xs font-mono uppercase tracking-widest text-[#8f5022] transition-colors hover:border-[#ce7b45]"
+            >
+              Parte de {newsletter.title}
+              {post.edicion ? ` · Edición ${post.edicion}` : ""}
+              <span aria-hidden="true">→</span>
+            </Link>
+          ) : null}
           {post.image ? (
             <div className="overflow-hidden rounded-sm border border-[#dad4c4]">
               <Image
