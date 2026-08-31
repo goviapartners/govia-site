@@ -10,12 +10,6 @@ export type NewsletterMeta = {
   title: string;
   description: string;
   date: string;
-  // true cuando el registro/voz de este newsletter es lo bastante distinto del
-  // blog serio (ej. Governance & Chill, fresco/irreverente) como para no
-  // aparecer mezclado en el índice general de /blog — se descubre solo vía
-  // /newsletters/[slug]. Default false: un newsletter que ya comparte la voz
-  // híbrida del blog (ej. DMBOK Stories) no necesita ocultarse.
-  hideFromBlogIndex?: boolean;
 };
 
 export type Newsletter = NewsletterMeta & {
@@ -40,7 +34,6 @@ export function getAllNewsletters(): NewsletterMeta[] {
         title: data.title as string,
         description: data.description as string,
         date: data.date as string,
-        hideFromBlogIndex: data.hideFromBlogIndex as boolean | undefined,
       };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));

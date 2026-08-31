@@ -4,7 +4,8 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContourLinesCaliza } from "@/components/contour-lines";
-import { getBlogIndexPosts } from "@/lib/blog";
+import { getAllPosts } from "@/lib/blog";
+import { getAllNewsletters } from "@/lib/newsletters";
 
 const title = "Blog | Govia Partners";
 const description =
@@ -26,7 +27,10 @@ function formatDate(date: string) {
 }
 
 export default function BlogIndexPage() {
-  const posts = getBlogIndexPosts();
+  const posts = getAllPosts();
+  const newsletterTitles = Object.fromEntries(
+    getAllNewsletters().map((n) => [n.slug, n.title]),
+  );
 
   return (
     <>
@@ -63,9 +67,16 @@ export default function BlogIndexPage() {
                     />
                   ) : null}
                   <div className="p-6">
-                    <p className="font-mono text-xs uppercase tracking-widest text-[#8f5022]">
-                      {formatDate(post.date)}
-                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <p className="font-mono text-xs uppercase tracking-widest text-[#8f5022]">
+                        {formatDate(post.date)}
+                      </p>
+                      {post.newsletter && newsletterTitles[post.newsletter] ? (
+                        <span className="rounded-full border border-[#dad4c4] px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-[#0a1416]/60">
+                          {newsletterTitles[post.newsletter]}
+                        </span>
+                      ) : null}
+                    </div>
                     <h2 className="mt-2 font-serif text-xl text-[#0a1416]">{post.title}</h2>
                     <p className="mt-2 text-sm leading-relaxed text-[#0a1416]/70">
                       {post.description}

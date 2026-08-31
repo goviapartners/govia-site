@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
-import { getAllNewsletters } from "./newsletters";
 
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 
@@ -52,21 +51,6 @@ export function getPostsByNewsletter(newsletterSlug: string): BlogPostMeta[] {
   return getAllPosts()
     .filter((post) => post.newsletter === newsletterSlug)
     .sort((a, b) => (a.edicion ?? 0) - (b.edicion ?? 0));
-}
-
-// Para /blog: todos los posts EXCEPTO las ediciones de newsletters cuyo registro
-// (src/content/newsletters/[slug].md, campo hideFromBlogIndex) marca su voz como
-// lo bastante distinta del blog serio como para no mezclarse en el feed general
-// — hoy Governance & Chill. Esas ediciones siguen viviendo en /blog/[slug] (link
-// directo, LinkedIn, etc.) y siguen listadas en /newsletters/[slug]; solo no
-// aparecen en el índice general de /blog.
-export function getBlogIndexPosts(): BlogPostMeta[] {
-  const hiddenSlugs = new Set(
-    getAllNewsletters()
-      .filter((n) => n.hideFromBlogIndex)
-      .map((n) => n.slug),
-  );
-  return getAllPosts().filter((post) => !post.newsletter || !hiddenSlugs.has(post.newsletter));
 }
 
 export function getPostBySlug(slug: string): BlogPost | null {
