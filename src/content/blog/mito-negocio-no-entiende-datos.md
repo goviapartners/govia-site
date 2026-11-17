@@ -1,7 +1,7 @@
 ---
 title: "Episodio 4 – El mito de que el negocio no entiende de gobierno de datos"
 description: "El negocio ya responde las tres preguntas centrales del gobierno de datos todos los días. Solo no las llama así."
-date: "2026-11-11"
+date: "2026-11-17"
 newsletter: governance-chill
 edicion: 4
 image: "/blog-covers/mito-negocio-no-entiende-datos.png"
